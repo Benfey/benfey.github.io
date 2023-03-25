@@ -4,71 +4,86 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>WyrmBot.com</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <style>
-        body, html {
-            margin: 0;
-            padding: 0;
-            height: 100%;
-        }
-        .bg-container {
-            position: relative;
-            height: 100%;
-            overflow: hidden;
-            cursor: pointer;
-            background-color: black;
-        }
-        .bg-image {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: contain;
-            transition: filter 0.5s;
-        }
-        .bg-container.blur .bg-image {
-            filter: blur(5px);
-        }
-        .text-container {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            font-family: 'Cinzel', serif;
-            font-size: 2em;
-            color: rgba(255, 255, 255, 0.8);
-            background-color: rgba(0, 0, 0, 0.4);
-            padding: 5px 10px;
-            border-radius: 5px;
-            z-index: 2;
-            transition: opacity 0.5s;
-        }
-        .text-container.hidden {
-            opacity: 0;
-        }
-        .flavor-text-container {
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            font-family: 'Cinzel', serif;
-            font-size: 2em;
-            color: rgba(255, 255, 255, 0.8);
-            opacity: 0;
-            z-index: 3;
-            transition: opacity 0.5s;
-        }
-        .flavor-text-container.visible {
-            opacity: 1;
-        }
-    </style>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/6.1.1/pica.min.js"></script>
+      body, html {
+          margin: 0;
+          padding: 0;
+          height: 100%;
+      }
+      .bg-container {
+          position: relative;
+          height: 100%;
+          overflow: hidden;
+          cursor: pointer;
+          background-color: black;
+      }
+      .bg-image {
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+          opacity: 1;
+          transition: filter 0.5s;
+      }
+      .bg-container.blur .bg-image {
+          filter: blur(5px);
+      }
+      .text-container {
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          font-family: 'Roboto', sans-serif;
+          font-weight: 300;
+          font-size: 2em;
+          color: rgba(255, 255, 255, 0.9);
+          background-color: rgba(0, 0, 0, 0.4);
+          padding: 5px 10px;
+          border-radius: 5px;
+          z-index: 2;
+          text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+          transition: opacity 0.5s;
+      }
+      .text-container.hidden {
+          opacity: 0;
+      }
+      .flavor-text-container {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-family: 'Roboto', sans-serif;
+          font-weight: 400;
+          font-size: 2em;
+          color: rgba(255, 255, 255, 0.9);
+          opacity: 0;
+          z-index: 3;
+          text-shadow: 0px 0px 3px rgba(0, 0, 0, 0.3);
+          transition: opacity 0.5s;
+      }
+      .flavor-text-container.visible {
+          opacity: 1;
+      }
+      /* Responsive font sizes */
+      @media screen and (max-width: 768px) {
+          .text-container {
+              font-size: 1.5em;
+          }
+          .flavor-text-container {
+              font-size: 1.5em;
+          }
+      }
+  </style>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/pica/6.1.1/pica.min.js"></script>
 </head>
 <body>
     <div class="bg-container" id="bg-container">
         <img src="https://th.bing.com/th/id/OIG.pVWtXMwBcbUeOnr6vYRw?pid=ImgGn" alt="Wyrm Background" class="bg-image" id="bg-image">
-        <div class="text-container" id="text-container">Click to reveal the Wyrm's secrets</div>
-        <div class="flavor-text-container" id="flavor-text-container">Your flavor text here</div>
+        <div class="text-container" id="text-container">Click to reveal the Wyrm's secrets (v0.2)</div>
+        <div class="flavor-text-container" id="flavor-text-container">flavor text here</div>
     </div>
     <script>
         const bgContainer = document.getElementById('bg-container');
@@ -94,6 +109,7 @@
                     unsharpThreshold: 2,    // Adjust the unsharp threshold to control the amount of sharpening
                 }).then(result => {
                     bgImage.src = result.toDataURL('image/png');
+                    bgImage.classList.add('loaded');
                 });
             };
         });
