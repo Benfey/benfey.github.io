@@ -41,9 +41,9 @@
         <label>Max Particles: <span id="particleCount">1000</span></label>
         <input type="range" id="particleSlider" min="100" max="2000" step="10" value="1000"><br>
         <label>Flow: <span id="flowValue">1.00</span></label>
-        <input type="range" id="flowSlider" min="0.01" max="2.00" step="0.01" value="1.00"><br>
-        <label>Spawn Rate: <span id="spawnRateValue">0.500</span>ms</label>
-        <input type="range" id="spawnRateSlider" min="0.001" max="1.000" step="0.001" value="0.500"><br>
+        <input type="range" id="flowSlider" min="0.050" max="2.00" step="0.01" value="1.00"><br>
+        <label>Spawn Rate: <span id="spawnRateValue">0.010</span>ms</label>
+        <input type="range" id="spawnRateSlider" min="0.001" max="0.100" step="0.001" value="0.050"><br>
     </div>
     <script>
         const bgCanvas = document.getElementById('backgroundCanvas');
@@ -58,7 +58,7 @@
         let mouseX = 0, mouseY = 0;
         let isMouseDown = false;
         let lastParticleTime = 0;
-        let spawnRate = 50;
+        let spawnRate = 10;
 
         function resizeCanvas() {
             width = window.innerWidth;
@@ -325,8 +325,8 @@
         });
 
         spawnRateSlider.addEventListener('input', (e) => {
-            spawnRate = parseFloat(e.target.value);
-            spawnRateValueDisplay.textContent = spawnRate.toFixed(3);
+            spawnRate = parseFloat(e.target.value) * 1000; // Convert seconds to milliseconds
+            spawnRateValueDisplay.textContent = (spawnRate / 1000).toFixed(3); // Display in seconds
         });
 
         animate();
