@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Optimized Fluid Orbital Particle System with Boundary Explosions</title>
+    <title>Optimized Fluid Orbital Particle System with Boundary Explosions and Connection Controls</title>
     <style>
         body, html {
             margin: 0;
@@ -42,8 +42,12 @@
         <input type="range" id="particleSlider" min="100" max="2000" step="10" value="1000"><br>
         <label>Flow: <span id="flowValue">1.00</span></label>
         <input type="range" id="flowSlider" min="0.050" max="2.00" step="0.01" value="1.00"><br>
-        <label>Spawn Rate: <span id="spawnRateValue">0.010</span>ms</label>
-        <input type="range" id="spawnRateSlider" min="0.001" max="0.100" step="0.001" value="0.050"><br>
+        <label>Spawn Rate: <span id="spawnRateValue">0.005</span>ms</label>
+        <input type="range" id="spawnRateSlider" min="0.001" max="0.100" step="0.001" value="0.005"><br>
+        <label>Max Connections: <span id="maxConnectionsValue">20</span></label>
+        <input type="range" id="maxConnectionsSlider" min="0" max="100" step="1" value="20"><br>
+        <label>Max Connection Length: <span id="maxConnectionLengthValue">200</span></label>
+        <input type="range" id="maxConnectionLengthSlider" min="10" max="1000" step="1" value="200"><br>
     </div>
     <script>
         const bgCanvas = document.getElementById('backgroundCanvas');
@@ -58,7 +62,9 @@
         let mouseX = 0, mouseY = 0;
         let isMouseDown = false;
         let lastParticleTime = 0;
-        let spawnRate = 10;
+        let spawnRate = 0.005;
+        let maxConnections = 20;
+        let maxConnectionLength = 200;
 
         function resizeCanvas() {
             width = window.innerWidth;
@@ -104,6 +110,11 @@
         canvas.addEventListener('touchend', () => {
             isMouseDown = false;
         });
+
+        function getConnectionColor(distance) {
+            const hue = (distance / maxConnectionLength) * 360;
+            return `hsla(${hue}, 100%, 50%, 0.1)`;
+        }
 
         function createParticle(x, y, vx = 0, vy = 0) {
             const isBig = Math.random() < 0.03; // 3% chance for a big particle
@@ -228,20 +239,22 @@
         }
 
         function drawConnections() {
-            ctx.strokeStyle = 'rgba(255, 255, 255, 0.05)';
-            ctx.lineWidth = 0.5;
             for (let i = 0; i < particles.length; i++) {
-                for (let j = i + 1; j < particles.length; j++) {
+                let connections = 0;
+                for (let j = i + 1; j < particles.length && connections < maxConnections; j++) {
                     const p = particles[i];
                     const other = particles[j];
                     const dx = other.x - p.x;
                     const dy = other.y - p.y;
                     const distance = Math.sqrt(dx * dx + dy * dy);
-                    if (distance < 100) {
+                    if (distance < maxConnectionLength) {
                         ctx.beginPath();
                         ctx.moveTo(p.x, p.y);
                         ctx.lineTo(other.x, other.y);
+                        ctx.strokeStyle = getConnectionColor(distance);
+                        ctx.lineWidth = 1 - (distance / maxConnectionLength); // Thicker lines for closer particles
                         ctx.stroke();
+                        connections++;
                     }
                 }
             }
@@ -309,6 +322,10 @@
         const flowValueDisplay = document.getElementById('flowValue');
         const spawnRateSlider = document.getElementById('spawnRateSlider');
         const spawnRateValueDisplay = document.getElementById('spawnRateValue');
+        const maxConnectionsSlider = document.getElementById('maxConnectionsSlider');
+        const maxConnectionsValueDisplay = document.getElementById('maxConnectionsValue');
+        const maxConnectionLengthSlider = document.getElementById('maxConnectionLengthSlider');
+        const maxConnectionLengthValueDisplay = document.getElementById('maxConnectionLengthValue');
 
         particleSlider.addEventListener('input', (e) => {
             maxParticles = parseInt(e.target.value);
@@ -327,6 +344,16 @@
         spawnRateSlider.addEventListener('input', (e) => {
             spawnRate = parseFloat(e.target.value) * 1000; // Convert seconds to milliseconds
             spawnRateValueDisplay.textContent = (spawnRate / 1000).toFixed(3); // Display in seconds
+        });
+
+        maxConnectionsSlider.addEventListener('input', (e) => {
+            maxConnections = parseInt(e.target.value);
+            maxConnectionsValueDisplay.textContent = maxConnections;
+        });
+
+        maxConnectionLengthSlider.addEventListener('input', (e) => {
+            maxConnectionLength = parseInt(e.target.value);
+            maxConnectionLengthValueDisplay.textContent = maxConnectionLength;
         });
 
         animate();
