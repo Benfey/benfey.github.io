@@ -30,7 +30,7 @@
             z-index: 10;
         }
         input[type="range"] {
-            width: 200px;
+            width: 100px;
         }
     </style>
 </head>
@@ -85,6 +85,23 @@
         });
 
         canvas.addEventListener('mouseleave', () => {
+            isMouseDown = false;
+        });
+
+        // Touch events for mobile
+        canvas.addEventListener('touchmove', (e) => {
+            e.preventDefault();
+            const touch = e.touches[0];
+            mouseX = touch.clientX;
+            mouseY = touch.clientY;
+        });
+
+        canvas.addEventListener('touchstart', (e) => {
+            e.preventDefault();
+            isMouseDown = true;
+        });
+
+        canvas.addEventListener('touchend', () => {
             isMouseDown = false;
         });
 
