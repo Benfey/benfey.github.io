@@ -117,7 +117,8 @@ main {
     gap: 1rem;
 }
 
-.reading-time {
+.reading-time,
+.view-count {
     color: var(--text-secondary);
     font-size: 0.9rem;
 }

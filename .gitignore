@@ -1,0 +1,15 @@
+# Jekyll
+_site/
+.sass-cache/
+.jekyll-cache/
+.jekyll-metadata
+
+# Environment variables
+.env
+
+# Node modules (if using any)
+node_modules/
+
+# OS files
+.DS_Store
+Thumbs.db
