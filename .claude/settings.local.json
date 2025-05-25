@@ -1,7 +1,8 @@
 {
   "permissions": {
     "allow": [
-      "WebFetch(domain:www.goatcounter.com)"
+      "WebFetch(domain:www.goatcounter.com)",
+      "Bash(grep:*)"
     ],
     "deny": []
   }

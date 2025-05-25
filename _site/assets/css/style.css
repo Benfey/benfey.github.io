@@ -233,6 +233,40 @@ main {
     color: var(--text-accent) !important;
 }
 
+.sort-controls {
+    margin-bottom: 2rem;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.sort-controls label {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    font-weight: 500;
+}
+
+.sort-controls select {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+
+.sort-controls select:hover {
+    border-color: var(--text-accent);
+}
+
+.sort-controls select:focus {
+    outline: none;
+    border-color: var(--text-accent);
+    box-shadow: 0 0 0 2px rgba(74, 222, 128, 0.2);
+}
+
 .post-excerpt {
     color: var(--text-secondary);
     line-height: 1.5;

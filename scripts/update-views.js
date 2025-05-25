@@ -69,7 +69,14 @@ async function updateViewCounts() {
                 if (hit.path && hit.count) {
                     const count = typeof hit.count === 'string' ? 
                         parseInt(hit.count.replace(/,/g, '')) : hit.count;
-                    viewCounts[hit.path] = count;
+                    
+                    // Normalize Jekyll post URLs to have trailing slashes
+                    let path = hit.path;
+                    if (path.match(/^\/\d{4}\/\d{2}\/\d{2}\/[^\/]+$/) && !path.endsWith('/')) {
+                        path = path + '/';
+                    }
+                    
+                    viewCounts[path] = count;
                 }
             });
         } else if (data.pages) {
@@ -77,7 +84,14 @@ async function updateViewCounts() {
                 if (page.path && page.count) {
                     const count = typeof page.count === 'string' ? 
                         parseInt(page.count.replace(/,/g, '')) : page.count;
-                    viewCounts[page.path] = count;
+                    
+                    // Normalize Jekyll post URLs to have trailing slashes
+                    let path = page.path;
+                    if (path.match(/^\/\d{4}\/\d{2}\/\d{2}\/[^\/]+$/) && !path.endsWith('/')) {
+                        path = path + '/';
+                    }
+                    
+                    viewCounts[path] = count;
                 }
             });
         }
