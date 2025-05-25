@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% if page.title %}{{ page.title }} - {% endif %}{{ site.title }}</title>
     <link rel="stylesheet" href="{{ '/assets/css/style.css' | relative_url }}">
-    <script data-goatcounter="https://benfey.goatcounter.com/count" async src="//gc.zgo.at/count.js"></script>
+    <script data-goatcounter="https://benfey.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
     <header class="site-header">
@@ -46,29 +46,8 @@
                 });
             });
 
-            // Load view counts from GoatCounter
-            loadViewCounts();
         });
 
-        function loadViewCounts() {
-            // Replace view count placeholders with direct GoatCounter HTML embeds
-            document.querySelectorAll('.view-count').forEach(function(widget) {
-                var path = widget.dataset.path;
-                
-                // Create iframe for GoatCounter HTML widget
-                var iframe = document.createElement('iframe');
-                iframe.src = `https://benfey.goatcounter.com/counter${encodeURIComponent(path)}.html?no_branding=1&style=${encodeURIComponent('div{border:none!important;background:none!important;padding:0!important;margin:0!important;display:inline!important;font-size:0.9rem!important;color:#b0b0b0!important}#gcvc-views{color:#b0b0b0!important;font-size:0.9rem!important}#gcvc-for{display:none!important}')}`;
-                iframe.style.border = 'none';
-                iframe.style.background = 'transparent';
-                iframe.style.width = 'auto';
-                iframe.style.height = '20px';
-                iframe.style.display = 'inline-block';
-                
-                // Replace placeholder with iframe
-                widget.innerHTML = '';
-                widget.appendChild(iframe);
-            });
-        }
     </script>
 </body>
 </html>

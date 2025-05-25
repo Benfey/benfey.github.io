@@ -35,9 +35,10 @@
                             2 min read
                         
                     </span>
-                    <span class="view-count" data-path="/2025/05/24/the-intelligence-transition/">
-                        <span class="view-number">-</span> views
-                    </span>
+                    <img src="https://benfey.goatcounter.com/counter/2025/05/24/the-intelligence-transition/.png?no_branding=1" 
+                         alt="view count" 
+                         style="vertical-align: middle; margin-left: 0.5rem; height: 16px;"
+                         class="view-counter">
                     
                         <div class="post-tags">
                             
@@ -90,9 +91,10 @@ Meta</a>
                             < 1 min read
                         
                     </span>
-                    <span class="view-count" data-path="/2025/05/24/first-post/">
-                        <span class="view-number">-</span> views
-                    </span>
+                    <img src="https://benfey.goatcounter.com/counter/2025/05/24/first-post/.png?no_branding=1" 
+                         alt="view count" 
+                         style="vertical-align: middle; margin-left: 0.5rem; height: 16px;"
+                         class="view-counter">
                     
                         <div class="post-tags">
                             
@@ -140,51 +142,8 @@ Meta</a>
                 });
             });
 
-            // Load view counts from GoatCounter
-            loadViewCounts();
         });
 
-        function loadViewCounts() {
-            // Wait for GoatCounter to load, then add view count widgets
-            var checkGoatCounter = setInterval(function() {
-                if (window.goatcounter && window.goatcounter.visit_count) {
-                    clearInterval(checkGoatCounter);
-                    
-                    // Add view count widgets for each post
-                    document.querySelectorAll('.view-count').forEach(function(widget) {
-                        var path = widget.dataset.path;
-                        
-                        // Clear the placeholder content
-                        widget.innerHTML = '';
-                        
-                        // Create GoatCounter widget
-                        window.goatcounter.visit_count({
-                            append: widget,
-                            path: path,
-                            no_branding: true,
-                            style: `
-                                div { 
-                                    border: none !important;
-                                    background: none !important;
-                                    padding: 0 !important;
-                                    margin: 0 !important;
-                                    display: inline !important;
-                                    font-size: 0.9rem !important;
-                                    color: var(--text-secondary) !important;
-                                }
-                                #gcvc-views { 
-                                    color: var(--text-secondary) !important;
-                                    font-size: 0.9rem !important;
-                                }
-                                #gcvc-for {
-                                    display: none !important;
-                                }
-                            `
-                        });
-                    });
-                }
-            }, 100);
-        }
     </script>
 </body>
 </html>
