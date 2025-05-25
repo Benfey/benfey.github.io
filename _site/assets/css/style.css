@@ -219,6 +219,12 @@ main {
     margin-bottom: 0.5rem;
 }
 
+.post-comments {
+    margin-top: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid var(--border);
+}
+
 .site-footer {
     background-color: var(--bg-secondary);
     border-top: 1px solid var(--border);
