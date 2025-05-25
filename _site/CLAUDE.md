@@ -57,4 +57,7 @@ bundle exec jekyll serve
 - **Posts**: 2 foundation posts created (setup + intelligence transition)
 - **Mobile**: Responsive design with centered layout
 - **Features**: Auto-refresh comments, dark theme, minimal design
-- **Next priorities**: Tag pages, search, reading time estimates
+- **Tag System**: Full tag navigation with individual tag pages (/tags/tag-name/)
+- **Navigation**: Home, Archive, Tags pages
+- **Tag Features**: Clickable tags, friendly display names, active tag highlighting
+- **Next priorities**: Reading time estimates, RSS feed, search functionality

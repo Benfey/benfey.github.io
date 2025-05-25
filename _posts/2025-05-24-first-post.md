@@ -1,7 +1,7 @@
 ---
 title: "Setting up this blog"
 date: 2025-05-24
-tags: [meta, jekyll, github-pages]
+tags: [meta]
 ---
 
 The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:

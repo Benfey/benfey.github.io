@@ -14,7 +14,7 @@ title: Archive
                 {% if post.tags %}
                     <div class="post-tags">
                         {% for tag in post.tags %}
-                            <a href="{{ '/tags/' | append: tag | relative_url }}" class="tag">{% include tag-display.html tag=tag %}</a>
+                            <a href="/tags/#{{ tag | slugify }}" class="tag">{% include tag-to-display.html tag=tag %}</a>
                         {% endfor %}
                     </div>
                 {% endif %}
