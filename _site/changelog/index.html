@@ -27,12 +27,12 @@
     <div class="changelog-entry">
         <h2>2025-05-25</h2>
         <ul>
-            <li>Added clickable post tiles - entire tile area now navigates to post</li>
-            <li>Preserved individual tag click functionality</li>
-            <li>Added title color change on tile hover</li>
-            <li>Added reading time estimates to post tiles</li>
-            <li>Added view counters using GoatCounter's built-in API</li>
-            <li>Added changelog page</li>
+            <li>Added post sorting to archive page - sort by date (newest/oldest) or view count (most/least)</li>
+            <li>Post tiles are now fully clickable - click anywhere on a post tile to read it</li>
+            <li>Added reading time estimates to help you gauge post length</li>
+            <li>Added view counters showing how many times each post has been read</li>
+            <li>Improved hover effects for better visual feedback</li>
+            <li>Added this changelog page to track site updates</li>
         </ul>
     </div>
 
@@ -83,38 +83,7 @@
                 });
             });
 
-            // Load view counts
-            loadViewCounts();
         });
-
-        async function loadViewCounts() {
-            const viewCountElements = document.querySelectorAll('.view-count');
-            
-            viewCountElements.forEach(async (element) => {
-                const path = element.dataset.path;
-                const viewNumber = element.querySelector('.view-number');
-                
-                try {
-                    const response = await fetch(`https://benfey.goatcounter.com/counter${encodeURIComponent(path)}.json`);
-                    
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.count && data.count !== '0') {
-                            viewNumber.textContent = data.count;
-                        } else {
-                            // Hide if no views
-                            element.style.display = 'none';
-                        }
-                    } else {
-                        // Hide if API call fails
-                        element.style.display = 'none';
-                    }
-                } catch (error) {
-                    // Hide if error occurs
-                    element.style.display = 'none';
-                }
-            });
-        }
 
     </script>
 </body>

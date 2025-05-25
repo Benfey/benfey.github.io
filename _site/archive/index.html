@@ -23,7 +23,17 @@
     <main class="container">
         <h1>All Posts</h1>
 
-<ul class="post-list">
+<div class="sort-controls">
+    <label for="sort-select">Sort by:</label>
+    <select id="sort-select">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="views-high">Most Views</option>
+        <option value="views-low">Least Views</option>
+    </select>
+</div>
+
+<ul class="post-list" id="posts-newest" style="display: block;">
     
         <li class="post-item">
             <h2><a href="/2025/05/24/the-intelligence-transition/">The Singularity</a></h2>
@@ -36,9 +46,10 @@
                         2 min read
                     
                 </span>
-                <span class="view-count" data-path="/2025/05/24/the-intelligence-transition/">
-                    <span class="view-number">-</span> views
-                </span>
+                
+                
+                    <span class="view-count">1 views</span>
+                
                 
                     <div class="post-tags">
                         
@@ -88,9 +99,10 @@ Meta</a>
                         < 1 min read
                     
                 </span>
-                <span class="view-count" data-path="/2025/05/24/first-post/">
-                    <span class="view-number">-</span> views
-                </span>
+                
+                
+                    <span class="view-count">1 views</span>
+                
                 
                     <div class="post-tags">
                         
@@ -112,6 +124,152 @@ Meta</a>
         </li>
     
 </ul>
+
+<ul class="post-list" id="posts-oldest" style="display: none;">
+    
+        <li class="post-item">
+            <h2><a href="/2025/05/24/first-post/">Setting up this blog</a></h2>
+            <div class="post-meta">
+                <time datetime="2025-05-24T00:00:00-03:00">May 24, 2025</time>
+                <span class="reading-time">
+                    
+                    
+                    
+                        < 1 min read
+                    
+                </span>
+                
+                
+                    <span class="view-count">1 views</span>
+                
+                
+                    <div class="post-tags">
+                        
+                            <a href="/tags/#meta" class="tag">
+
+
+
+
+
+
+Meta</a>
+                        
+                    </div>
+                
+            </div>
+            
+                <div class="post-excerpt">The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here...</div>
+            
+        </li>
+    
+        <li class="post-item">
+            <h2><a href="/2025/05/24/the-intelligence-transition/">The Singularity</a></h2>
+            <div class="post-meta">
+                <time datetime="2025-05-24T00:00:00-03:00">May 24, 2025</time>
+                <span class="reading-time">
+                    
+                    
+                    
+                        2 min read
+                    
+                </span>
+                
+                
+                    <span class="view-count">1 views</span>
+                
+                
+                    <div class="post-tags">
+                        
+                            <a href="/tags/#singularity" class="tag">
+
+
+
+
+
+
+Singularity</a>
+                        
+                            <a href="/tags/#ai-capabilities" class="tag">
+
+
+
+
+
+
+AI Capabilities</a>
+                        
+                            <a href="/tags/#meta" class="tag">
+
+
+
+
+
+
+Meta</a>
+                        
+                    </div>
+                
+            </div>
+            
+                <div class="post-excerpt">The Singularity (n.): The moment when artificial intelligence progresses so rapidly that we can no longer predict or comprehend its trajectory. A technological tipping point where AI systems become capable...</div>
+            
+        </li>
+    
+</ul>
+
+<ul class="post-list" id="posts-views-high" style="display: none;">
+</ul>
+
+<ul class="post-list" id="posts-views-low" style="display: none;">
+</ul>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const sortSelect = document.getElementById('sort-select');
+    const postLists = {
+        'newest': document.getElementById('posts-newest'),
+        'oldest': document.getElementById('posts-oldest'),
+        'views-high': document.getElementById('posts-views-high'),
+        'views-low': document.getElementById('posts-views-low')
+    };
+    
+    // View count data from Jekyll
+    const viewData = {"/":1,"/2025/05/24/the-intelligence-transition/":1,"/2025/05/24/first-post/":1};
+    
+    // Create view-sorted lists
+    const newestPosts = Array.from(postLists.newest.children);
+    
+    // Sort by views (high to low)
+    const postsByViewsHigh = [...newestPosts].sort((a, b) => {
+        const urlA = a.querySelector('h2 a').getAttribute('href');
+        const urlB = b.querySelector('h2 a').getAttribute('href');
+        const viewsA = viewData[urlA] || 0;
+        const viewsB = viewData[urlB] || 0;
+        return viewsB - viewsA;
+    });
+    
+    // Sort by views (low to high)
+    const postsByViewsLow = [...newestPosts].sort((a, b) => {
+        const urlA = a.querySelector('h2 a').getAttribute('href');
+        const urlB = b.querySelector('h2 a').getAttribute('href');
+        const viewsA = viewData[urlA] || 0;
+        const viewsB = viewData[urlB] || 0;
+        return viewsA - viewsB;
+    });
+    
+    // Populate view-sorted lists
+    postsByViewsHigh.forEach(post => postLists['views-high'].appendChild(post.cloneNode(true)));
+    postsByViewsLow.forEach(post => postLists['views-low'].appendChild(post.cloneNode(true)));
+    
+    // Handle sort changes
+    sortSelect.addEventListener('change', function() {
+        // Hide all lists
+        Object.values(postLists).forEach(list => list.style.display = 'none');
+        // Show selected list
+        postLists[this.value].style.display = 'block';
+    });
+});
+</script>
     </main>
 
     <footer class="site-footer">
@@ -136,38 +294,7 @@ Meta</a>
                 });
             });
 
-            // Load view counts
-            loadViewCounts();
         });
-
-        async function loadViewCounts() {
-            const viewCountElements = document.querySelectorAll('.view-count');
-            
-            viewCountElements.forEach(async (element) => {
-                const path = element.dataset.path;
-                const viewNumber = element.querySelector('.view-number');
-                
-                try {
-                    const response = await fetch(`https://benfey.goatcounter.com/counter${encodeURIComponent(path)}.json`);
-                    
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.count && data.count !== '0') {
-                            viewNumber.textContent = data.count;
-                        } else {
-                            // Hide if no views
-                            element.style.display = 'none';
-                        }
-                    } else {
-                        // Hide if API call fails
-                        element.style.display = 'none';
-                    }
-                } catch (error) {
-                    // Hide if error occurs
-                    element.style.display = 'none';
-                }
-            });
-        }
 
     </script>
 </body>

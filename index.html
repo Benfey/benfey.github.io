@@ -20,7 +20,7 @@ layout: default
                     </span>
                     {% assign view_count = site.data.views[post.url] %}
                     {% if view_count and view_count > 0 %}
-                        <span class="view-count">{{ view_count | number_with_delimiter }} views</span>
+                        <span class="view-count">{{ view_count | number_with_delimiter }} view{% if view_count != 1 %}s{% endif %}</span>
                     {% endif %}
                     {% if post.tags %}
                         <div class="post-tags">
