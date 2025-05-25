@@ -59,10 +59,14 @@ bundle exec jekyll serve
 - **Mobile**: Responsive design with centered layout
 - **Features**: Auto-refresh comments, dark theme, minimal design
 - **Tag System**: Simplified unified tags page (replaced individual tag pages)
-- **Navigation**: Home, Archive, Tags pages
-- **Tag Features**: Clickable tags, friendly display names, unified listing
+- **Navigation**: Home, Archive, Tags, Changelog pages
+- **Post Tiles**: Fully clickable tiles with reading time and view counters
+- **View Counters**: Uses GoatCounter's built-in JSON API (requires enabling in settings)
 - **Recent Changes**: 
+  - Added clickable post tiles with hover effects
+  - Added reading time estimates to all post tiles
+  - Added view counters using GoatCounter API
+  - Added changelog page for tracking updates
   - Simplified tag system from individual pages to single tags.html
   - Updated main post title from "Intelligence Transition" to "The Singularity"
-  - Refined content to focus on rapid AI progress and unpredictability
-- **Next priorities**: Reading time estimates, RSS feed, search functionality
+- **Next priorities**: RSS feed improvements, search functionality, related posts
