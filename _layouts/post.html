@@ -10,7 +10,7 @@ layout: default
             {% if page.tags %}
                 <div class="post-tags">
                     {% for tag in page.tags %}
-                        <span class="tag">{{ tag }}</span>
+                        <a href="{{ '/tags/' | append: tag | relative_url }}" class="tag">{% include tag-display.html tag=tag %}</a>
                     {% endfor %}
                 </div>
             {% endif %}

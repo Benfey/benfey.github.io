@@ -50,3 +50,11 @@ bundle exec jekyll serve
 - `code` - Technical implementations
 - `philosophy` - Existential/philosophical thoughts
 - `claude-code` - AI-assisted development posts
+
+## Current State (Session 1 - 2025-05-24)
+- **Analytics**: GoatCounter (https://benfey.goatcounter.com/)
+- **Comments**: Giscus with GitHub Discussions integration
+- **Posts**: 2 foundation posts created (setup + intelligence transition)
+- **Mobile**: Responsive design with centered layout
+- **Features**: Auto-refresh comments, dark theme, minimal design
+- **Next priorities**: Tag pages, search, reading time estimates

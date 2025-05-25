@@ -119,6 +119,7 @@ main {
 .post-tags {
     display: flex;
     gap: 0.5rem;
+    flex-wrap: wrap;
 }
 
 .tag {
@@ -128,6 +129,38 @@ main {
     border-radius: 4px;
     font-size: 0.8rem;
     font-weight: 500;
+    text-decoration: none;
+    transition: background-color 0.2s ease;
+}
+
+.tag:hover {
+    background-color: var(--text-accent);
+    color: var(--bg-primary);
+}
+
+.tag-active {
+    background-color: var(--text-accent);
+    color: var(--bg-primary);
+    cursor: default;
+}
+
+.tag-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.tag-cloud-item {
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tag-count {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
 }
 
 .post-excerpt {
@@ -258,12 +291,25 @@ main {
     }
     
     .post {
-        padding: 1.5rem;
+        padding: 1rem;
         margin: 0 auto;
+        max-width: 100%;
+        width: 100%;
     }
     
     .post-item {
         margin: 0 auto 1.5rem auto;
+        max-width: 100%;
+    }
+    
+    .post-content {
+        width: 100%;
+        overflow-wrap: break-word;
+    }
+    
+    .post-content pre {
+        overflow-x: auto;
+        max-width: 100%;
     }
     
     .post-title {
@@ -274,6 +320,17 @@ main {
         flex-direction: column;
         align-items: flex-start;
         gap: 0.5rem;
+    }
+    
+    .post-tags {
+        gap: 0.3rem;
+        margin-top: 0.5rem;
+    }
+    
+    .tag {
+        font-size: 0.75rem;
+        padding: 0.15rem 0.5rem;
+        white-space: nowrap;
     }
     
     .container {
