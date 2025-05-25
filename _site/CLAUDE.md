@@ -44,20 +44,25 @@ bundle exec jekyll serve
 
 ## Key Tags
 
-- `intelligence-transition` - Core theme posts
+- `singularity` - Core theme posts about AI rapid advancement
+- `intelligence-transition` - Historical perspective posts  
 - `paper-review` - Research paper analysis
 - `tools` - AI tool experiments
 - `code` - Technical implementations
 - `philosophy` - Existential/philosophical thoughts
 - `claude-code` - AI-assisted development posts
 
-## Current State (Session 1 - 2025-05-24)
+## Current State (Session 2 - 2025-05-25)
 - **Analytics**: GoatCounter (https://benfey.goatcounter.com/)
 - **Comments**: Giscus with GitHub Discussions integration
-- **Posts**: 2 foundation posts created (setup + intelligence transition)
+- **Posts**: 2 foundation posts (setup + singularity post)
 - **Mobile**: Responsive design with centered layout
 - **Features**: Auto-refresh comments, dark theme, minimal design
-- **Tag System**: Full tag navigation with individual tag pages (/tags/tag-name/)
+- **Tag System**: Simplified unified tags page (replaced individual tag pages)
 - **Navigation**: Home, Archive, Tags pages
-- **Tag Features**: Clickable tags, friendly display names, active tag highlighting
+- **Tag Features**: Clickable tags, friendly display names, unified listing
+- **Recent Changes**: 
+  - Simplified tag system from individual pages to single tags.html
+  - Updated main post title from "Intelligence Transition" to "The Singularity"
+  - Refined content to focus on rapid AI progress and unpredictability
 - **Next priorities**: Reading time estimates, RSS feed, search functionality
