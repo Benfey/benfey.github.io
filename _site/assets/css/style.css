@@ -116,6 +116,11 @@ main {
     gap: 1rem;
 }
 
+.reading-time {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+}
+
 .post-tags {
     display: flex;
     gap: 0.5rem;
@@ -161,6 +166,69 @@ main {
 .tag-count {
     color: var(--text-secondary);
     font-size: 0.9rem;
+}
+
+.tags-overview {
+    margin-top: 2rem;
+}
+
+.tag-section {
+    margin-bottom: 3rem;
+    padding-bottom: 2rem;
+    border-bottom: 1px solid var(--border);
+}
+
+.tag-section:last-child {
+    border-bottom: none;
+}
+
+.tag-section-link {
+    color: var(--text-primary);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.tag-section-link:hover {
+    color: var(--text-accent);
+}
+
+.tag-section h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+}
+
+.tag-posts {
+    list-style: none;
+    padding-left: 0;
+}
+
+.tag-posts li {
+    margin-bottom: 0.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+}
+
+.tag-posts time {
+    color: var(--text-secondary);
+    font-size: 0.9rem;
+    margin-left: 1rem;
+}
+
+.tag-posts a {
+    color: var(--text-secondary);
+    text-decoration: none;
+}
+
+.tag-posts a:hover {
+    color: var(--text-accent);
+}
+
+.view-all {
+    font-style: italic;
+    color: var(--text-accent) !important;
 }
 
 .post-excerpt {

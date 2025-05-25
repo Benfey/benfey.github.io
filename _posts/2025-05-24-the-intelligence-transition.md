@@ -1,7 +1,7 @@
 ---
 title: "The Intelligence Transition"
 date: 2025-05-24
-tags: [intelligence-transition, philosophy, ai-capabilities, meta]
+tags: [intelligence-transition, ai-capabilities, meta]
 ---
 
 > **Intelligence Transition** (n.): The historical period in which artificial systems achieve and surpass human-level cognitive capabilities across domains, fundamentally altering the relationship between human intelligence and problem-solving capacity. Analogous to how the Industrial Revolution automated physical labor, the Intelligence Transition represents the automation of thought itself.

@@ -1,0 +1,31 @@
+---
+layout: default
+title: Tag Archive
+permalink: /tags/
+---
+
+<h1>Browse by Tag</h1>
+
+<div class="tags-overview">
+    {% assign sorted_tags = site.tags | sort %}
+    {% for tag in sorted_tags %}
+        {% assign tag_name = tag[0] %}
+        {% assign posts = tag[1] %}
+        {% assign post_count = posts | size %}
+        
+        <div class="tag-section">
+            <h2 id="{{ tag_name | slugify }}">
+                {% include tag-to-display.html tag=tag_name %}
+                <span class="tag-count">({{ post_count }})</span>
+            </h2>
+            <ul class="tag-posts">
+                {% for post in posts %}
+                    <li>
+                        <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                        <time>{{ post.date | date: "%b %d, %Y" }}</time>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
+    {% endfor %}
+</div>

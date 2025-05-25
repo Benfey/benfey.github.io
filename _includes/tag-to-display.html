@@ -1,0 +1,24 @@
+{% comment %}
+Convert a tag slug to a friendly display name
+Examples: "intelligence-transition" -> "Intelligence Transition"
+          "ai-capabilities" -> "AI Capabilities" 
+          "what-if" -> "What If"
+{% endcomment %}
+
+{% assign words = include.tag | split: "-" %}
+{% assign display_words = "" | split: "" %}
+
+{% for word in words %}
+  {% if word == "ai" %}
+    {% assign display_words = display_words | push: "AI" %}
+  {% elsif word == "ml" %}
+    {% assign display_words = display_words | push: "ML" %}
+  {% elsif word == "llm" %}
+    {% assign display_words = display_words | push: "LLM" %}
+  {% else %}
+    {% assign capitalized = word | capitalize %}
+    {% assign display_words = display_words | push: capitalized %}
+  {% endif %}
+{% endfor %}
+
+{{ display_words | join: " " }}
