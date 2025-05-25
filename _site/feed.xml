@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-24T23:34:18-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">The Intelligence Transition</title><subtitle>Thoughts on AI, papers, tools, and experiments</subtitle><entry><title type="html">The Intelligence Transition</title><link href="http://localhost:4000/2025/05/24/the-intelligence-transition/" rel="alternate" type="text/html" title="The Intelligence Transition" /><published>2025-05-24T00:00:00-03:00</published><updated>2025-05-24T00:00:00-03:00</updated><id>http://localhost:4000/2025/05/24/the-intelligence-transition</id><content type="html" xml:base="http://localhost:4000/2025/05/24/the-intelligence-transition/"><![CDATA[<blockquote>
+  <p><strong>Intelligence Transition</strong> (n.): The historical period in which artificial systems achieve and surpass human-level cognitive capabilities across domains, fundamentally altering the relationship between human intelligence and problem-solving capacity. Analogous to how the Industrial Revolution automated physical labor, the Intelligence Transition represents the automation of thought itself.</p>
+</blockquote>
+
+<p>Hello. My name is Anton.</p>
+
+<p>I’m a Site Reliability Engineer, with a background in Quality Engineering, and Software Engineering.</p>
+
+<p>I’m also a big nerd.</p>
+
+<p>I don’t expect this to be read by anyone but me, but I hope it might resonate with someone who shares the same curiosity about what we’re building and where we’re headed. We’re living through something unprecedented, and it deserves to be witnessed and recorded.</p>
+
+<p>November 2022 marked the beginning of a new chapter in my life. The release of ChatGPT was the moment I could suddenly talk to artificial intelligence and receive responses that were both coherent and genuinely intelligent. The conversations felt real in a way that previous AI interactions never had.</p>
+
+<h2 id="beyond-the-turing-test">Beyond the Turing Test</h2>
+
+<p>In the subsequent months and years, we’ve quietly blown past the Turing Test. I expected this to be a massively celebrated achievement, humanity’s greatest milestone since landing on the moon. Instead, it came and went without so much as a collective shout-out. The goalpost simply moved.</p>
+
+<p>This struck me as profound evidence of how unprepared we are for what’s happening. We spent decades defining machine intelligence by whether it could fool us into thinking it was human. When that barrier fell, we barely noticed because the implications were too large to process.</p>
+
+<h2 id="the-scale-of-this-transition">The Scale of This Transition</h2>
+
+<p>I’ve come to think of this period as analogous to the introduction of the internet. Maybe even more transformative. The Industrial Revolution automated labor, allowing machines to exceed what human muscle could achieve. Machines could lift more, work longer, and operate more precisely than human muscle ever could.</p>
+
+<p>I think what we’re experiencing now is the Intelligence Transition: the automation of intelligence itself. We’re building systems that can think, reason, create, and solve problems in ways that complement and often exceed human cognitive capabilities.</p>
+
+<h2 id="embracing-uncertainty">Embracing Uncertainty</h2>
+
+<p>I’ve gone from thinking I had a reasonable sense of what the future held to realizing it has become fundamentally impossible to predict. The exponential nature of AI progress means we’re looking at potential phase transitions in how intelligence operates on Earth, not just incremental improvements.</p>
+
+<p>This uncertainty has given me profound hope. Problems that once seemed insurmountable (the nature of reality, space travel, disease, understanding the universe) may be solvable in our lifetime. We may no longer be bottlenecked waiting for the next Einstein to emerge naturally. We might be building systems that can think at superhuman levels across every domain simultaneously.</p>
+
+<h2 id="why-this-blog-exists">Why This Blog Exists</h2>
+
+<p>I don’t know what our future will look like, but I feel a deep sense of wonder and excitement about finding out. This blog exists to document that journey.</p>
+
+<p>The Intelligence Transition is happening whether we understand it or not. I’d rather pay attention.</p>]]></content><author><name>Anton</name></author><category term="intelligence-transition" /><category term="philosophy" /><category term="ai-capabilities" /><category term="meta" /><summary type="html"><![CDATA[Intelligence Transition (n.): The historical period in which artificial systems achieve and surpass human-level cognitive capabilities across domains, fundamentally altering the relationship between human intelligence and problem-solving capacity. Analogous to how the Industrial Revolution automated physical labor, the Intelligence Transition represents the automation of thought itself.]]></summary></entry><entry><title type="html">Setting up this blog</title><link href="http://localhost:4000/2025/05/24/first-post/" rel="alternate" type="text/html" title="Setting up this blog" /><published>2025-05-24T00:00:00-03:00</published><updated>2025-05-24T00:00:00-03:00</updated><id>http://localhost:4000/2025/05/24/first-post</id><content type="html" xml:base="http://localhost:4000/2025/05/24/first-post/"><![CDATA[<p>The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:</p>
+
+<ul>
+  <li>Papers I’ve read</li>
+  <li>Tools I’m experimenting with</li>
+  <li>Random AI thoughts and observations</li>
+  <li>Code experiments and results</li>
+  <li>The implications of AI</li>
+</ul>
+
+<p>Let’s see if styling works:</p>
+
+<h2 id="code-blocks-work-nicely">Code blocks work nicely</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello_ai</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Ready to write about AI stuff!</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Bold text</strong> and <em>italic text</em> look good. Links should work too.</p>
+
+<blockquote>
+  <p>Block quotes for when I want to highlight something important from a paper</p>
+</blockquote>
+
+<p>Time to start writing actual content!</p>]]></content><author><name>Anton</name></author><category term="meta" /><category term="jekyll" /><category term="github-pages" /><summary type="html"><![CDATA[The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:]]></summary></entry></feed>

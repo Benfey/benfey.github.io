@@ -1,0 +1,25 @@
+title: "The Intelligence Transition"
+description: "Thoughts on AI, papers, tools, and experiments"
+baseurl: ""
+url: "https://benfey.github.io"
+
+markdown: kramdown
+highlighter: rouge
+plugins:
+  - jekyll-feed
+  - jekyll-sitemap
+
+permalink: /:year/:month/:day/:title/
+
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      layout: "post"
+      author: "Anton"
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock
