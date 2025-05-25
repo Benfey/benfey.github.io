@@ -15,6 +15,7 @@
                 <a href="/">Home</a>
                 <a href="/archive">Archive</a>
                 <a href="/tags">Tags</a>
+                <a href="/changelog">Changelog</a>
             </nav>
         </div>
     </header>
@@ -28,6 +29,16 @@
             <h2><a href="/2025/05/24/the-intelligence-transition/">The Singularity</a></h2>
             <div class="post-meta">
                 <time datetime="2025-05-24T00:00:00-03:00">May 24, 2025</time>
+                <span class="reading-time">
+                    
+                    
+                    
+                        2 min read
+                    
+                </span>
+                <span class="view-count" data-path="/2025/05/24/the-intelligence-transition/">
+                    <span class="view-number">-</span> views
+                </span>
                 
                     <div class="post-tags">
                         
@@ -70,6 +81,16 @@ Meta</a>
             <h2><a href="/2025/05/24/first-post/">Setting up this blog</a></h2>
             <div class="post-meta">
                 <time datetime="2025-05-24T00:00:00-03:00">May 24, 2025</time>
+                <span class="reading-time">
+                    
+                    
+                    
+                        < 1 min read
+                    
+                </span>
+                <span class="view-count" data-path="/2025/05/24/first-post/">
+                    <span class="view-number">-</span> views
+                </span>
                 
                     <div class="post-tags">
                         
@@ -98,5 +119,61 @@ Meta</a>
             <p>&copy; 2025 Anton Benfey &mdash; Witnessing intelligence emerge</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make post tiles clickable
+            document.querySelectorAll('.post-item').forEach(function(item) {
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('tag') || e.target.closest('.tag')) {
+                        return;
+                    }
+                    const titleLink = item.querySelector('h2 a');
+                    if (titleLink) {
+                        window.location.href = titleLink.href;
+                    }
+                });
+            });
+
+            // Load view counts from GoatCounter
+            loadViewCounts();
+        });
+
+        async function loadViewCounts() {
+            try {
+                const viewCountElements = document.querySelectorAll('.view-count');
+                if (viewCountElements.length === 0) return;
+
+                // Fetch view counts from our serverless function
+                const response = await fetch('/api/views');
+
+                if (!response.ok) {
+                    console.log('View counts unavailable');
+                    return;
+                }
+
+                const data = await response.json();
+                
+                // Update view counts on page
+                viewCountElements.forEach(el => {
+                    const path = el.dataset.path;
+                    const stat = data.pages?.find(p => p.path === path);
+                    if (stat && stat.count) {
+                        el.querySelector('.view-number').textContent = stat.count.toLocaleString();
+                    } else {
+                        el.style.display = 'none'; // Hide if no data
+                    }
+                });
+
+            } catch (error) {
+                console.log('Could not load view counts:', error);
+                // Hide view count elements if fetch fails
+                document.querySelectorAll('.view-count').forEach(el => {
+                    el.style.display = 'none';
+                });
+            }
+        }
+    </script>
 </body>
 </html>

@@ -15,6 +15,7 @@
                 <a href="{{ '/' | relative_url }}">Home</a>
                 <a href="{{ '/archive' | relative_url }}">Archive</a>
                 <a href="{{ '/tags' | relative_url }}">Tags</a>
+                <a href="{{ '/changelog' | relative_url }}">Changelog</a>
             </nav>
         </div>
     </header>
@@ -28,5 +29,61 @@
             <p>&copy; {{ 'now' | date: "%Y" }} Anton Benfey &mdash; Witnessing intelligence emerge</p>
         </div>
     </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Make post tiles clickable
+            document.querySelectorAll('.post-item').forEach(function(item) {
+                item.style.cursor = 'pointer';
+                item.addEventListener('click', function(e) {
+                    if (e.target.classList.contains('tag') || e.target.closest('.tag')) {
+                        return;
+                    }
+                    const titleLink = item.querySelector('h2 a');
+                    if (titleLink) {
+                        window.location.href = titleLink.href;
+                    }
+                });
+            });
+
+            // Load view counts from GoatCounter
+            loadViewCounts();
+        });
+
+        async function loadViewCounts() {
+            try {
+                const viewCountElements = document.querySelectorAll('.view-count');
+                if (viewCountElements.length === 0) return;
+
+                // Fetch view counts from our serverless function
+                const response = await fetch('/api/views');
+
+                if (!response.ok) {
+                    console.log('View counts unavailable');
+                    return;
+                }
+
+                const data = await response.json();
+                
+                // Update view counts on page
+                viewCountElements.forEach(el => {
+                    const path = el.dataset.path;
+                    const stat = data.pages?.find(p => p.path === path);
+                    if (stat && stat.count) {
+                        el.querySelector('.view-number').textContent = stat.count.toLocaleString();
+                    } else {
+                        el.style.display = 'none'; // Hide if no data
+                    }
+                });
+
+            } catch (error) {
+                console.log('Could not load view counts:', error);
+                // Hide view count elements if fetch fails
+                document.querySelectorAll('.view-count').forEach(el => {
+                    el.style.display = 'none';
+                });
+            }
+        }
+    </script>
 </body>
 </html>
