@@ -46,38 +46,7 @@
                 });
             });
 
-            // Load view counts
-            loadViewCounts();
         });
-
-        async function loadViewCounts() {
-            const viewCountElements = document.querySelectorAll('.view-count');
-            
-            viewCountElements.forEach(async (element) => {
-                const path = element.dataset.path;
-                const viewNumber = element.querySelector('.view-number');
-                
-                try {
-                    const response = await fetch(`https://benfey.goatcounter.com/counter${encodeURIComponent(path)}.json`);
-                    
-                    if (response.ok) {
-                        const data = await response.json();
-                        if (data.count && data.count !== '0') {
-                            viewNumber.textContent = data.count;
-                        } else {
-                            // Hide if no views
-                            element.style.display = 'none';
-                        }
-                    } else {
-                        // Hide if API call fails
-                        element.style.display = 'none';
-                    }
-                } catch (error) {
-                    // Hide if error occurs
-                    element.style.display = 'none';
-                }
-            });
-        }
 
     </script>
 </body>
