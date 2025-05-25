@@ -30,12 +30,31 @@ layout: default
                 data-mapping="pathname"
                 data-strict="0"
                 data-reactions-enabled="1"
-                data-emit-metadata="0"
+                data-emit-metadata="1"
                 data-input-position="bottom"
                 data-theme="dark"
                 data-lang="en"
                 crossorigin="anonymous"
                 async>
+        </script>
+        
+        <script>
+        function refreshGiscus() {
+            const iframe = document.querySelector('iframe.giscus-frame');
+            if (iframe) {
+                iframe.contentWindow.location.reload();
+            }
+        }
+
+        window.addEventListener('message', function (event) {
+            if (event.origin !== 'https://giscus.app') return;
+            
+            const { data } = event;
+            if (data && data.giscus && data.giscus.discussion) {
+                // Comment was posted, refresh after a short delay
+                setTimeout(refreshGiscus, 2000);
+            }
+        });
         </script>
     </div>
 </article>
