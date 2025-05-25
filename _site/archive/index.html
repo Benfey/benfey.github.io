@@ -36,10 +36,9 @@
                         2 min read
                     
                 </span>
-                <img src="https://benfey.goatcounter.com/counter/2025/05/24/the-intelligence-transition/.png?no_branding=1" 
-                     alt="view count" 
-                     style="vertical-align: middle; margin-left: 0.5rem; height: 16px;"
-                     class="view-counter">
+                <span class="view-count" data-path="/2025/05/24/the-intelligence-transition/">
+                    <span class="view-number">-</span> views
+                </span>
                 
                     <div class="post-tags">
                         
@@ -89,10 +88,9 @@ Meta</a>
                         < 1 min read
                     
                 </span>
-                <img src="https://benfey.goatcounter.com/counter/2025/05/24/first-post/.png?no_branding=1" 
-                     alt="view count" 
-                     style="vertical-align: middle; margin-left: 0.5rem; height: 16px;"
-                     class="view-counter">
+                <span class="view-count" data-path="/2025/05/24/first-post/">
+                    <span class="view-number">-</span> views
+                </span>
                 
                     <div class="post-tags">
                         
@@ -138,7 +136,38 @@ Meta</a>
                 });
             });
 
+            // Load view counts
+            loadViewCounts();
         });
+
+        async function loadViewCounts() {
+            const viewCountElements = document.querySelectorAll('.view-count');
+            
+            viewCountElements.forEach(async (element) => {
+                const path = element.dataset.path;
+                const viewNumber = element.querySelector('.view-number');
+                
+                try {
+                    const response = await fetch(`https://benfey.goatcounter.com/counter${encodeURIComponent(path)}.json`);
+                    
+                    if (response.ok) {
+                        const data = await response.json();
+                        if (data.count && data.count !== '0') {
+                            viewNumber.textContent = data.count;
+                        } else {
+                            // Hide if no views
+                            element.style.display = 'none';
+                        }
+                    } else {
+                        // Hide if API call fails
+                        element.style.display = 'none';
+                    }
+                } catch (error) {
+                    // Hide if error occurs
+                    element.style.display = 'none';
+                }
+            });
+        }
 
     </script>
 </body>

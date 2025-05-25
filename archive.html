@@ -20,10 +20,9 @@ title: Archive
                         {{ reading_time }} min read
                     {% endif %}
                 </span>
-                <img src="https://benfey.goatcounter.com/counter{{ post.url }}.png?no_branding=1" 
-                     alt="view count" 
-                     style="vertical-align: middle; margin-left: 0.5rem; height: 16px;"
-                     class="view-counter">
+                <span class="view-count" data-path="{{ post.url }}">
+                    <span class="view-number">-</span> views
+                </span>
                 {% if post.tags %}
                     <div class="post-tags">
                         {% for tag in post.tags %}
