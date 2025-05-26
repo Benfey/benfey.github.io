@@ -7,6 +7,23 @@
     --text-accent: #4ade80;
     --border: #404040;
     --shadow: rgba(0, 0, 0, 0.3);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    
+    /* Border radius */
+    --border-radius: 8px;
+    --border-radius-sm: 4px;
+    
+    /* Transitions */
+    --transition: 0.2s ease;
+    
+    /* Font sizes */
+    --font-size-sm: 0.8rem;
+    --font-size-base: 0.9rem;
 }
 
 * {
@@ -131,7 +148,7 @@ main {
 .reading-time,
 .view-count {
     color: var(--text-secondary);
-    font-size: 0.9rem;
+    font-size: var(--font-size-base);
 }
 
 .post-tags {

@@ -7,15 +7,7 @@ layout: default
         <h1 class="post-title">{{ page.title }}</h1>
         <div class="post-meta">
             <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
-            <span class="reading-time">
-                {% assign words = content | number_of_words %}
-                {% assign reading_time = words | divided_by: 200 %}
-                {% if reading_time < 1 %}
-                    < 1 min read
-                {% else %}
-                    {{ reading_time }} min read
-                {% endif %}
-            </span>
+            {% include post-reading-time.html %}
             {% assign view_count = site.data.views[page.url] %}
             {% if view_count and view_count > 0 %}
                 <span class="view-count">{{ view_count | number_with_delimiter }} view{% if view_count != 1 %}s{% endif %}</span>
@@ -51,23 +43,5 @@ layout: default
                 async>
         </script>
         
-        <script>
-        function refreshGiscus() {
-            const iframe = document.querySelector('iframe.giscus-frame');
-            if (iframe) {
-                iframe.contentWindow.location.reload();
-            }
-        }
-
-        window.addEventListener('message', function (event) {
-            if (event.origin !== 'https://giscus.app') return;
-            
-            const { data } = event;
-            if (data && data.giscus && data.giscus.discussion) {
-                // Comment was posted, refresh after a short delay
-                setTimeout(refreshGiscus, 2000);
-            }
-        });
-        </script>
     </div>
 </article>

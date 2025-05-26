@@ -32,13 +32,9 @@
         <h1 class="post-title">Setting up this blog</h1>
         <div class="post-meta">
             <time datetime="2025-05-24T00:00:00-03:00">May 24, 2025</time>
-            <span class="reading-time">
-                
-                
-                
-                    < 1 min read
-                
-            </span>
+            
+
+<span class="reading-time">< 1 min read</span>
             
             
                 <span class="view-count">2 views</span>
@@ -106,24 +102,6 @@ Meta</a>
                 async>
         </script>
         
-        <script>
-        function refreshGiscus() {
-            const iframe = document.querySelector('iframe.giscus-frame');
-            if (iframe) {
-                iframe.contentWindow.location.reload();
-            }
-        }
-
-        window.addEventListener('message', function (event) {
-            if (event.origin !== 'https://giscus.app') return;
-            
-            const { data } = event;
-            if (data && data.giscus && data.giscus.discussion) {
-                // Comment was posted, refresh after a short delay
-                setTimeout(refreshGiscus, 2000);
-            }
-        });
-        </script>
     </div>
 </article>
     </main>
@@ -135,22 +113,6 @@ Meta</a>
     </footer>
 
     <script src="/assets/js/search.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Make post tiles clickable
-            document.querySelectorAll('.post-item').forEach(function(item) {
-                item.style.cursor = 'pointer';
-                item.addEventListener('click', function(e) {
-                    if (e.target.classList.contains('tag') || e.target.closest('.tag')) {
-                        return;
-                    }
-                    const titleLink = item.querySelector('h2 a');
-                    if (titleLink) {
-                        window.location.href = titleLink.href;
-                    }
-                });
-            });
-        });
-    </script>
+    <script src="/assets/js/main.js"></script>
 </body>
 </html>

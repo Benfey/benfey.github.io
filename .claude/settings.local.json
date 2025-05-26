@@ -13,7 +13,9 @@
       "Bash(/usr/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/x64-linux/rg -B 10 -A 15 \"benfey.github.io\" /home/anton/.claude.json)",
       "Bash(/usr/lib/node_modules/@anthropic-ai/claude-code/vendor/ripgrep/x64-linux/rg -B 2 -A 20 \"github\" /home/anton/.claude.json)",
       "mcp__slack__slack_get_users",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(find:*)",
+      "Bash(ls:*)"
     ],
     "deny": []
   }

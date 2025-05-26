@@ -5,35 +5,7 @@ layout: default
 <div class="home">
     <ul class="post-list">
         {% for post in site.posts limit: 10 %}
-            <li class="post-item">
-                <h2><a href="{{ post.url | relative_url }}">{{ post.title }}</a></h2>
-                <div class="post-meta">
-                    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%B %d, %Y" }}</time>
-                    <span class="reading-time">
-                        {% assign words = post.content | number_of_words %}
-                        {% assign reading_time = words | divided_by: 200 %}
-                        {% if reading_time < 1 %}
-                            < 1 min read
-                        {% else %}
-                            {{ reading_time }} min read
-                        {% endif %}
-                    </span>
-                    {% assign view_count = site.data.views[post.url] %}
-                    {% if view_count and view_count > 0 %}
-                        <span class="view-count">{{ view_count | number_with_delimiter }} view{% if view_count != 1 %}s{% endif %}</span>
-                    {% endif %}
-                    {% if post.tags %}
-                        <div class="post-tags">
-                            {% for tag in post.tags %}
-                                <a href="/tags/#{{ tag | slugify }}" class="tag">{% include tag-to-display.html tag=tag %}</a>
-                            {% endfor %}
-                        </div>
-                    {% endif %}
-                </div>
-                {% if post.excerpt %}
-                    <div class="post-excerpt">{{ post.excerpt | strip_html | truncatewords: 50 }}</div>
-                {% endif %}
-            </li>
+            {% include post-list-item.html post=post excerpt_limit=50 %}
         {% endfor %}
     </ul>
 </div>
