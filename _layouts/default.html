@@ -12,10 +12,16 @@
         <div class="container">
             <h1><a href="{{ '/' | relative_url }}">{{ site.title }}</a></h1>
             <nav>
-                <a href="{{ '/' | relative_url }}">Home</a>
-                <a href="{{ '/archive' | relative_url }}">Archive</a>
-                <a href="{{ '/tags' | relative_url }}">Tags</a>
-                <a href="{{ '/changelog' | relative_url }}">Changelog</a>
+                <div class="nav-links">
+                    <a href="{{ '/' | relative_url }}">Home</a>
+                    <a href="{{ '/archive' | relative_url }}">Archive</a>
+                    <a href="{{ '/tags' | relative_url }}">Tags</a>
+                    <a href="{{ '/changelog' | relative_url }}">Changelog</a>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search posts..." aria-label="Search posts">
+                    <div id="search-results" class="search-results" aria-live="polite"></div>
+                </div>
             </nav>
         </div>
     </header>
@@ -30,6 +36,7 @@
         </div>
     </footer>
 
+    <script src="{{ '/assets/js/search.js' | relative_url }}"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Make post tiles clickable
@@ -45,9 +52,7 @@
                     }
                 });
             });
-
         });
-
     </script>
 </body>
 </html>

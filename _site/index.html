@@ -12,10 +12,16 @@
         <div class="container">
             <h1><a href="/">The Intelligence Transition</a></h1>
             <nav>
-                <a href="/">Home</a>
-                <a href="/archive">Archive</a>
-                <a href="/tags">Tags</a>
-                <a href="/changelog">Changelog</a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/archive">Archive</a>
+                    <a href="/tags">Tags</a>
+                    <a href="/changelog">Changelog</a>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search posts..." aria-label="Search posts">
+                    <div id="search-results" class="search-results" aria-live="polite"></div>
+                </div>
             </nav>
         </div>
     </header>
@@ -25,7 +31,7 @@
     <ul class="post-list">
         
             <li class="post-item">
-                <h2><a href="/2025/05/24/the-intelligence-transition/">The Singularity</a></h2>
+                <h2><a href="/2025/05/24/the-singularity/">The Singularity</a></h2>
                 <div class="post-meta">
                     <time datetime="2025-05-24T00:00:00-03:00">May 24, 2025</time>
                     <span class="reading-time">
@@ -37,7 +43,7 @@
                     </span>
                     
                     
-                        <span class="view-count">1 view</span>
+                        <span class="view-count">5 views</span>
                     
                     
                         <div class="post-tags">
@@ -93,7 +99,7 @@ Meta</a>
                     </span>
                     
                     
-                        <span class="view-count">1 view</span>
+                        <span class="view-count">2 views</span>
                     
                     
                         <div class="post-tags">
@@ -126,6 +132,7 @@ Meta</a>
         </div>
     </footer>
 
+    <script src="/assets/js/search.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Make post tiles clickable
@@ -141,9 +148,7 @@ Meta</a>
                     }
                 });
             });
-
         });
-
     </script>
 </body>
 </html>
