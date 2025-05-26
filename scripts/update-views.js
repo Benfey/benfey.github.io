@@ -70,13 +70,16 @@ async function updateViewCounts() {
                     const count = typeof hit.count === 'string' ? 
                         parseInt(hit.count.replace(/,/g, '')) : hit.count;
                     
+                    // Clean path: remove query params and fragments
+                    let path = hit.path.split('?')[0].split('#')[0];
+                    
                     // Normalize Jekyll post URLs to have trailing slashes
-                    let path = hit.path;
                     if (path.match(/^\/\d{4}\/\d{2}\/\d{2}\/[^\/]+$/) && !path.endsWith('/')) {
                         path = path + '/';
                     }
                     
-                    viewCounts[path] = count;
+                    // Combine counts for the same clean path
+                    viewCounts[path] = (viewCounts[path] || 0) + count;
                 }
             });
         } else if (data.pages) {
@@ -85,13 +88,16 @@ async function updateViewCounts() {
                     const count = typeof page.count === 'string' ? 
                         parseInt(page.count.replace(/,/g, '')) : page.count;
                     
+                    // Clean path: remove query params and fragments
+                    let path = page.path.split('?')[0].split('#')[0];
+                    
                     // Normalize Jekyll post URLs to have trailing slashes
-                    let path = page.path;
                     if (path.match(/^\/\d{4}\/\d{2}\/\d{2}\/[^\/]+$/) && !path.endsWith('/')) {
                         path = path + '/';
                     }
                     
-                    viewCounts[path] = count;
+                    // Combine counts for the same clean path
+                    viewCounts[path] = (viewCounts[path] || 0) + count;
                 }
             });
         }
