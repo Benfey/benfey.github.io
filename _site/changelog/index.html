@@ -12,10 +12,16 @@
         <div class="container">
             <h1><a href="/">The Intelligence Transition</a></h1>
             <nav>
-                <a href="/">Home</a>
-                <a href="/archive">Archive</a>
-                <a href="/tags">Tags</a>
-                <a href="/changelog">Changelog</a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/archive">Archive</a>
+                    <a href="/tags">Tags</a>
+                    <a href="/changelog">Changelog</a>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search posts..." aria-label="Search posts">
+                    <div id="search-results" class="search-results" aria-live="polite"></div>
+                </div>
             </nav>
         </div>
     </header>
@@ -67,6 +73,7 @@
         </div>
     </footer>
 
+    <script src="/assets/js/search.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Make post tiles clickable
@@ -82,9 +89,7 @@
                     }
                 });
             });
-
         });
-
     </script>
 </body>
 </html>

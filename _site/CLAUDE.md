@@ -113,3 +113,4 @@ View counters are implemented using GoatCounter's API with a local Node.js scrip
 - `assets/css/style.css` - View counter styling
 - `.env` - API token (gitignored)
 - `.gitignore` - Excludes sensitive files
+

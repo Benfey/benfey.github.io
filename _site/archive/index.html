@@ -12,10 +12,16 @@
         <div class="container">
             <h1><a href="/">The Intelligence Transition</a></h1>
             <nav>
-                <a href="/">Home</a>
-                <a href="/archive">Archive</a>
-                <a href="/tags">Tags</a>
-                <a href="/changelog">Changelog</a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/archive">Archive</a>
+                    <a href="/tags">Tags</a>
+                    <a href="/changelog">Changelog</a>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search posts..." aria-label="Search posts">
+                    <div id="search-results" class="search-results" aria-live="polite"></div>
+                </div>
             </nav>
         </div>
     </header>
@@ -36,7 +42,7 @@
 <ul class="post-list" id="posts-newest" style="display: block;">
     
         <li class="post-item">
-            <h2><a href="/2025/05/24/the-intelligence-transition/">The Singularity</a></h2>
+            <h2><a href="/2025/05/24/the-singularity/">The Singularity</a></h2>
             <div class="post-meta">
                 <time datetime="2025-05-24T00:00:00-03:00">May 24, 2025</time>
                 <span class="reading-time">
@@ -48,7 +54,7 @@
                 </span>
                 
                 
-                    <span class="view-count">1 views</span>
+                    <span class="view-count">5 views</span>
                 
                 
                     <div class="post-tags">
@@ -101,7 +107,7 @@ Meta</a>
                 </span>
                 
                 
-                    <span class="view-count">1 views</span>
+                    <span class="view-count">2 views</span>
                 
                 
                     <div class="post-tags">
@@ -140,7 +146,7 @@ Meta</a>
                 </span>
                 
                 
-                    <span class="view-count">1 views</span>
+                    <span class="view-count">2 views</span>
                 
                 
                     <div class="post-tags">
@@ -163,7 +169,7 @@ Meta</a>
         </li>
     
         <li class="post-item">
-            <h2><a href="/2025/05/24/the-intelligence-transition/">The Singularity</a></h2>
+            <h2><a href="/2025/05/24/the-singularity/">The Singularity</a></h2>
             <div class="post-meta">
                 <time datetime="2025-05-24T00:00:00-03:00">May 24, 2025</time>
                 <span class="reading-time">
@@ -175,7 +181,7 @@ Meta</a>
                 </span>
                 
                 
-                    <span class="view-count">1 views</span>
+                    <span class="view-count">5 views</span>
                 
                 
                     <div class="post-tags">
@@ -234,7 +240,7 @@ document.addEventListener('DOMContentLoaded', function() {
     };
     
     // View count data from Jekyll
-    const viewData = {"/":1,"/2025/05/24/the-intelligence-transition/":1,"/2025/05/24/first-post/":1};
+    const viewData = {"/":11,"/2025/05/24/the-singularity/":5,"/changelog":4,"/archive":4,"/tags":4,"/2025/05/24/first-post/":2};
     
     // Create view-sorted lists
     const newestPosts = Array.from(postLists.newest.children);
@@ -278,6 +284,7 @@ document.addEventListener('DOMContentLoaded', function() {
         </div>
     </footer>
 
+    <script src="/assets/js/search.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Make post tiles clickable
@@ -293,9 +300,7 @@ document.addEventListener('DOMContentLoaded', function() {
                     }
                 });
             });
-
         });
-
     </script>
 </body>
 </html>

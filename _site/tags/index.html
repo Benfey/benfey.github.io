@@ -12,10 +12,16 @@
         <div class="container">
             <h1><a href="/">The Intelligence Transition</a></h1>
             <nav>
-                <a href="/">Home</a>
-                <a href="/archive">Archive</a>
-                <a href="/tags">Tags</a>
-                <a href="/changelog">Changelog</a>
+                <div class="nav-links">
+                    <a href="/">Home</a>
+                    <a href="/archive">Archive</a>
+                    <a href="/tags">Tags</a>
+                    <a href="/changelog">Changelog</a>
+                </div>
+                <div class="search-container">
+                    <input type="text" id="search-input" placeholder="Search posts..." aria-label="Search posts">
+                    <div id="search-results" class="search-results" aria-live="polite"></div>
+                </div>
             </nav>
         </div>
     </header>
@@ -45,7 +51,7 @@ AI Capabilities
             <ul class="tag-posts">
                 
                     <li>
-                        <a href="/2025/05/24/the-intelligence-transition/">The Singularity</a>
+                        <a href="/2025/05/24/the-singularity/">The Singularity</a>
                         <time>May 24, 2025</time>
                     </li>
                 
@@ -71,7 +77,7 @@ Meta
             <ul class="tag-posts">
                 
                     <li>
-                        <a href="/2025/05/24/the-intelligence-transition/">The Singularity</a>
+                        <a href="/2025/05/24/the-singularity/">The Singularity</a>
                         <time>May 24, 2025</time>
                     </li>
                 
@@ -102,7 +108,7 @@ Singularity
             <ul class="tag-posts">
                 
                     <li>
-                        <a href="/2025/05/24/the-intelligence-transition/">The Singularity</a>
+                        <a href="/2025/05/24/the-singularity/">The Singularity</a>
                         <time>May 24, 2025</time>
                     </li>
                 
@@ -118,6 +124,7 @@ Singularity
         </div>
     </footer>
 
+    <script src="/assets/js/search.js"></script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {
             // Make post tiles clickable
@@ -133,9 +140,7 @@ Singularity
                     }
                 });
             });
-
         });
-
     </script>
 </body>
 </html>
