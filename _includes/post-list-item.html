@@ -1,0 +1,7 @@
+<li class="post-item">
+    <h2><a href="{{ include.post.url | relative_url }}">{{ include.post.title }}</a></h2>
+    {% include post-meta.html post=include.post %}
+    {% if include.post.excerpt %}
+        <div class="post-excerpt">{{ include.post.excerpt | strip_html | truncatewords: include.excerpt_limit | default: 50 }}</div>
+    {% endif %}
+</li>
