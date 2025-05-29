@@ -1,6 +1,6 @@
 // Main JavaScript - imports and initializes all modules
 import { initClickablePosts } from './modules/posts.js';
-import { initArchiveSorting, initArchiveLoadMore } from './modules/archive.js';
+import { initArchiveSorting, initArchivePagination } from './modules/archive.js';
 import { initGiscusRefresh } from './modules/comments.js';
 import { initTagShowMore } from './modules/tags.js';
 import { initViewData } from './modules/viewData.js';
@@ -14,14 +14,14 @@ document.addEventListener('DOMContentLoaded', function() {
     // Make post tiles clickable
     initClickablePosts();
     
-    // Initialize archive sorting if on archive page
+    // Initialize archive functionality if on archive page
     if (document.getElementById('sort-select')) {
         initArchiveSorting();
     }
     
-    // Initialize archive load more if available
-    if (document.getElementById('load-more-btn')) {
-        initArchiveLoadMore();
+    // Initialize archive pagination if available
+    if (document.getElementById('prev-page')) {
+        initArchivePagination();
     }
     
     // Initialize Giscus comment refresh if on post page

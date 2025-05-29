@@ -4,8 +4,25 @@ layout: default
 
 <div class="home">
     <ul class="post-list">
-        {% for post in site.posts limit: 10 %}
+        {% for post in paginator.posts %}
             {% include post-list-item.html post=post excerpt_limit=50 %}
         {% endfor %}
     </ul>
+    
+    <!-- Pagination links -->
+    {% if paginator.total_pages > 1 %}
+    <div class="pagination">
+        {% if paginator.previous_page %}
+            <a href="{{ paginator.previous_page_path | relative_url }}" class="pagination-link">&laquo; Previous</a>
+        {% endif %}
+        
+        <span class="page-number">
+            Page {{ paginator.page }} of {{ paginator.total_pages }}
+        </span>
+        
+        {% if paginator.next_page %}
+            <a href="{{ paginator.next_page_path | relative_url }}" class="pagination-link">Next &raquo;</a>
+        {% endif %}
+    </div>
+    {% endif %}
 </div>

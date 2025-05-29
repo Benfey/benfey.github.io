@@ -3,10 +3,16 @@
   "version": "1.0.0",
   "description": "Anton Benfey's blog - The Intelligence Transition",
   "scripts": {
-    "update-views": "node scripts/update-views.js"
+    "update-views": "node scripts/update-views.js",
+    "build-search": "node scripts/build-search-index.js",
+    "build": "bundle exec jekyll build && npm run build-search",
+    "deploy": "npm run update-views && bundle exec jekyll build && npm run build-search"
   },
   "dependencies": {
     "dotenv": "^16.0.0"
+  },
+  "devDependencies": {
+    "lunr": "^2.3.9"
   },
   "private": true
 }

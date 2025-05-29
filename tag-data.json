@@ -1,0 +1,5 @@
+---
+layout: null
+permalink: /_data/tags/tag-data.json
+---
+{% include generate-tag-data.liquid %}

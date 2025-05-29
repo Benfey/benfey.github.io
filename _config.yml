@@ -22,6 +22,14 @@ defaults:
     values:
       layout: "post"
       author: "Anton"
+  - scope:
+      path: "_pages"
+      type: "pages"
+    values:
+      layout: "default"
+
+include:
+  - "_pages"
 
 exclude:
   - README.md

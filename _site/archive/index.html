@@ -39,7 +39,7 @@
     </select>
 </div>
 
-<!-- Show first 20 posts by default -->
+<!-- Posts container - dynamically loaded -->
 <ul class="post-list" id="posts-list">
     
         <li class="post-item">
@@ -132,12 +132,46 @@ Meta</a>
     
 </ul>
 
-<!-- Show more button if there are more than 20 posts -->
+<!-- Pagination controls -->
+
+
+
+
 
 
 <script>
-// Make view data available to main.js
-window.viewData = {"/":27,"/2025/05/24/the-singularity/":9,"/changelog":9,"/tags":9,"/archive":8,"/2025/05/24/first-post/":7,"/2025/05/24/the-intelligence-transition/":5};
+// Make data available to archive pagination
+window.archiveData = {
+    allPosts: [
+        
+        {
+            id: 0,
+            title: "The Singularity",
+            url: "/2025/05/24/the-singularity/",
+            date: "May 24, 2025",
+            iso_date: "2025-05-24",
+            tags: "singularity ai-capabilities meta",
+            excerpt: "The Singularity (n.): The moment when artificial intelligence progresses so rapidly that we can no longer predict or comprehend its trajectory. A technological tipping point where AI systems become capable...",
+            reading_time: "2 min read"
+        },
+        
+        {
+            id: 1,
+            title: "Setting up this blog",
+            url: "/2025/05/24/first-post/",
+            date: "May 24, 2025",
+            iso_date: "2025-05-24",
+            tags: "meta",
+            excerpt: "The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here...",
+            reading_time: "< 1 min read"
+        }
+        
+    ],
+    viewData: {"/":27,"/2025/05/24/the-singularity/":9,"/changelog":9,"/tags":9,"/archive":8,"/2025/05/24/first-post/":7,"/2025/05/24/the-intelligence-transition/":5},
+    postsPerPage: 20,
+    totalPosts: 2,
+    totalPages: 0
+};
 </script>
     </main>
 
