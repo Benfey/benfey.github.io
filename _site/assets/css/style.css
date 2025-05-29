@@ -109,9 +109,6 @@ main {
 }
 
 .post-item {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
     padding: var(--spacing-md);
     margin-bottom: var(--spacing-md);
     transition: border-color var(--transition);
@@ -146,9 +143,20 @@ main {
 }
 
 .reading-time,
-.view-count {
+.view-count,
+.tag-count,
+.tag-posts time,
+.sort-controls label {
     color: var(--text-secondary);
     font-size: var(--font-size-base);
+}
+
+.post-item,
+.post,
+.changelog-entry {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
 }
 
 .post-tags {
@@ -193,10 +201,6 @@ main {
     gap: var(--spacing-xs);
 }
 
-.tag-count {
-    color: var(--text-secondary);
-    font-size: var(--font-size-base);
-}
 
 .tags-overview {
     margin-top: 2rem;
@@ -242,8 +246,6 @@ main {
 }
 
 .tag-posts time {
-    color: var(--text-secondary);
-    font-size: var(--font-size-base);
     margin-left: 1rem;
 }
 
@@ -269,8 +271,6 @@ main {
 }
 
 .sort-controls label {
-    color: var(--text-secondary);
-    font-size: var(--font-size-base);
     font-weight: 500;
 }
 
@@ -301,9 +301,6 @@ main {
 }
 
 .post {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
     padding: var(--spacing-lg);
 }
 
@@ -412,9 +409,6 @@ main {
 }
 
 .changelog-entry {
-    background-color: var(--bg-secondary);
-    border: 1px solid var(--border);
-    border-radius: var(--border-radius);
     padding: var(--spacing-md);
     margin-bottom: var(--spacing-md);
 }
