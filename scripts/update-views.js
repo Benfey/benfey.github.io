@@ -59,47 +59,33 @@ async function updateViewCounts() {
         console.log('Fetching view counts from GoatCounter...');
         const data = await fetchViewCounts();
         
-        
         // Create views data object
         const viewCounts = {};
         
+        // Extract and normalize path data
+        function processPathData(item) {
+            if (item.path && item.count) {
+                const count = typeof item.count === 'string' ? 
+                    parseInt(item.count.replace(/,/g, '')) : item.count;
+                
+                // Clean path: remove query params and fragments
+                let path = item.path.split('?')[0].split('#')[0];
+                
+                // Normalize Jekyll post URLs to have trailing slashes
+                if (path.match(/^\/\d{4}\/\d{2}\/\d{2}\/[^\/]+$/) && !path.endsWith('/')) {
+                    path = path + '/';
+                }
+                
+                // Combine counts for the same clean path
+                viewCounts[path] = (viewCounts[path] || 0) + count;
+            }
+        }
+        
         // Try different possible data structures
         if (data.hits) {
-            data.hits.forEach(hit => {
-                if (hit.path && hit.count) {
-                    const count = typeof hit.count === 'string' ? 
-                        parseInt(hit.count.replace(/,/g, '')) : hit.count;
-                    
-                    // Clean path: remove query params and fragments
-                    let path = hit.path.split('?')[0].split('#')[0];
-                    
-                    // Normalize Jekyll post URLs to have trailing slashes
-                    if (path.match(/^\/\d{4}\/\d{2}\/\d{2}\/[^\/]+$/) && !path.endsWith('/')) {
-                        path = path + '/';
-                    }
-                    
-                    // Combine counts for the same clean path
-                    viewCounts[path] = (viewCounts[path] || 0) + count;
-                }
-            });
+            data.hits.forEach(processPathData);
         } else if (data.pages) {
-            data.pages.forEach(page => {
-                if (page.path && page.count) {
-                    const count = typeof page.count === 'string' ? 
-                        parseInt(page.count.replace(/,/g, '')) : page.count;
-                    
-                    // Clean path: remove query params and fragments
-                    let path = page.path.split('?')[0].split('#')[0];
-                    
-                    // Normalize Jekyll post URLs to have trailing slashes
-                    if (path.match(/^\/\d{4}\/\d{2}\/\d{2}\/[^\/]+$/) && !path.endsWith('/')) {
-                        path = path + '/';
-                    }
-                    
-                    // Combine counts for the same clean path
-                    viewCounts[path] = (viewCounts[path] || 0) + count;
-                }
-            });
+            data.pages.forEach(processPathData);
         }
 
         // Write to _data/views.json
