@@ -1,0 +1,11 @@
+/* Site footer */
+.site-footer {
+    background-color: var(--bg-secondary);
+    border-top: 1px solid var(--border);
+    padding: 2rem 0;
+    margin-top: 3rem;
+    text-align: center;
+    color: var(--text-secondary);
+    font-size: var(--font-size-base);
+    width: 100%;
+}

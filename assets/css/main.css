@@ -1,0 +1,17 @@
+/* Main CSS file - imports all components */
+
+/* Base styles */
+@import 'base/variables.css';
+@import 'base/reset.css';
+
+/* Layout components */
+@import 'layout/container.css';
+@import 'layout/header.css';
+@import 'layout/footer.css';
+
+/* UI components */
+@import 'components/posts.css';
+@import 'components/search.css';
+@import 'components/tags.css';
+@import 'components/pagination.css';
+@import 'components/changelog.css';

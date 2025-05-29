@@ -1,0 +1,31 @@
+/* CSS Custom Properties - Design System */
+:root {
+    /* Colors */
+    --bg-primary: #1a1a1a;
+    --bg-secondary: #2a2a2a;
+    --bg-accent: #2d5a3d;
+    --text-primary: #f8f8f8;
+    --text-secondary: #b0b0b0;
+    --text-accent: #4ade80;
+    --border: #404040;
+    --shadow: rgba(0, 0, 0, 0.3);
+    
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    
+    /* Border radius */
+    --border-radius: 8px;
+    --border-radius-sm: 4px;
+    
+    /* Transitions */
+    --transition: 0.2s ease;
+    
+    /* Typography */
+    --font-size-sm: 0.8rem;
+    --font-size-base: 0.9rem;
+    --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --line-height: 1.6;
+}

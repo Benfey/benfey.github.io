@@ -1,29 +1,64 @@
-// Simple client-side search implementation
+// Efficient client-side search with lunr.js
+let searchIndex = null;
 let searchData = [];
 let selectedIndex = -1;
 
-// Load search data
+// Load search data and build lunr index
 fetch('/search.json')
     .then(response => response.json())
     .then(data => {
-        searchData = data;
-        console.log('Search data loaded:', data.length, 'posts');
+        searchData = data.posts;
+        
+        // Build lunr index
+        searchIndex = lunr(function () {
+            this.ref('id');
+            this.field('title', { boost: 10 });
+            this.field('tags', { boost: 5 });
+            this.field('excerpt');
+            
+            searchData.forEach(function (post) {
+                this.add(post);
+            }, this);
+        });
+        
+        console.log('Search index built for', searchData.length, 'posts');
     })
     .catch(error => {
         console.error('Failed to load search data:', error);
     });
 
-// Ultra-simple: only title substring matching (case insensitive)
+// Perform search using lunr index
 function performSearch(query) {
-    if (!query || query.length < 1) {
+    if (!query || query.length < 2 || !searchIndex) {
         return [];
     }
     
+    try {
+        // Use lunr's search with wildcards for partial matching
+        const searchQuery = query.trim().split(' ').map(term => `${term}*`).join(' ');
+        const results = searchIndex.search(searchQuery);
+        
+        // Map lunr results back to post data
+        return results.slice(0, 8).map(result => {
+            const post = searchData[result.ref];
+            return {
+                ...post,
+                score: result.score
+            };
+        });
+    } catch (error) {
+        // Fallback to simple search if lunr query fails
+        return simpleSearch(query);
+    }
+}
+
+// Fallback simple search
+function simpleSearch(query) {
     const searchTerm = query.toLowerCase().trim();
-    
     return searchData.filter(post => {
         const title = post.title.toLowerCase();
-        return title.includes(searchTerm);
+        const tags = post.tags.toLowerCase();
+        return title.includes(searchTerm) || tags.includes(searchTerm);
     }).slice(0, 8);
 }
 
@@ -39,7 +74,7 @@ function displayResults(results, query) {
     const resultsHTML = results.map(result => `
         <div class="search-result" data-url="${result.url}">
             <div class="search-title">${result.title}</div>
-            <div class="search-meta">${result.tags}</div>
+            <div class="search-meta">${result.date} • ${result.tags || 'No tags'}</div>
         </div>
     `).join('');
     
