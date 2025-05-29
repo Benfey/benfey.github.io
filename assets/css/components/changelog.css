@@ -1,0 +1,40 @@
+/* Changelog page styles */
+.changelog {
+    margin-top: 2rem;
+}
+
+.changelog-entry {
+    padding: var(--spacing-md);
+    margin-bottom: var(--spacing-md);
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+}
+
+.changelog-entry h2 {
+    color: var(--text-accent);
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+    padding-bottom: var(--spacing-xs);
+}
+
+.changelog-entry ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.changelog-entry li {
+    color: var(--text-secondary);
+    margin-bottom: var(--spacing-xs);
+    padding-left: 1.5rem;
+    position: relative;
+}
+
+.changelog-entry li:before {
+    content: "•";
+    color: var(--text-accent);
+    font-weight: bold;
+    position: absolute;
+    left: 0;
+}

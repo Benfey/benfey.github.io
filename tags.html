@@ -19,12 +19,27 @@ permalink: /tags/
                 <span class="tag-count">({{ post_count }})</span>
             </h2>
             <ul class="tag-posts">
-                {% for post in posts %}
+                {% for post in posts limit: 10 %}
                     <li>
                         <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
                         <time>{{ post.date | date: "%b %d, %Y" }}</time>
                     </li>
                 {% endfor %}
+                {% if post_count > 10 %}
+                    <li class="show-more">
+                        <button class="show-more-btn" data-tag="{{ tag_name | slugify }}">
+                            Show {{ post_count | minus: 10 }} more posts...
+                        </button>
+                        <ul class="hidden-posts" id="hidden-{{ tag_name | slugify }}">
+                            {% for post in posts offset: 10 %}
+                                <li>
+                                    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+                                    <time>{{ post.date | date: "%b %d, %Y" }}</time>
+                                </li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                {% endif %}
             </ul>
         </div>
     {% endfor %}

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Archive - The Intelligence Transition</title>
-    <link rel="stylesheet" href="/assets/css/style.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
     <script data-goatcounter="https://benfey.goatcounter.com/count" async src="https://gc.zgo.at/count.js"></script>
 </head>
 <body>
@@ -39,6 +39,7 @@
     </select>
 </div>
 
+<!-- Show first 20 posts by default -->
 <ul class="post-list" id="posts-list">
     
         <li class="post-item">
@@ -131,6 +132,9 @@ Meta</a>
     
 </ul>
 
+<!-- Show more button if there are more than 20 posts -->
+
+
 <script>
 // Make view data available to main.js
 window.viewData = {"/":27,"/2025/05/24/the-singularity/":9,"/changelog":9,"/tags":9,"/archive":8,"/2025/05/24/first-post/":7,"/2025/05/24/the-intelligence-transition/":5};
@@ -143,7 +147,8 @@ window.viewData = {"/":27,"/2025/05/24/the-singularity/":9,"/changelog":9,"/tags
         </div>
     </footer>
 
+    <script src="https://unpkg.com/lunr/lunr.js"></script>
     <script src="/assets/js/search.js"></script>
-    <script src="/assets/js/main.js"></script>
+    <script type="module" src="/assets/js/main.js"></script>
 </body>
 </html>
