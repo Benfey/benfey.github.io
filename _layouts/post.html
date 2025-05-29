@@ -5,21 +5,7 @@ layout: default
 <article class="post">
     <header class="post-header">
         <h1 class="post-title">{{ page.title }}</h1>
-        <div class="post-meta">
-            <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
-            {% include post-reading-time.html %}
-            {% assign view_count = site.data.views[page.url] %}
-            {% if view_count and view_count > 0 %}
-                <span class="view-count">{{ view_count | number_with_delimiter }} view{% if view_count != 1 %}s{% endif %}</span>
-            {% endif %}
-            {% if page.tags %}
-                <div class="post-tags">
-                    {% for tag in page.tags %}
-                        <a href="/tags/#{{ tag | slugify }}" class="tag">{% include tag-to-display.html tag=tag %}</a>
-                    {% endfor %}
-                </div>
-            {% endif %}
-        </div>
+        {% include post-meta.html post=page %}
     </header>
 
     <div class="post-content">

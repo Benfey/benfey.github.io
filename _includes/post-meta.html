@@ -1,13 +1,21 @@
 <div class="post-meta">
-    <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%B %d, %Y" }}</time>
-    {% include reading-time.html post=include.post %}
-    {% assign view_count = site.data.views[include.post.url] %}
+    {% if include.post %}
+        <time datetime="{{ include.post.date | date_to_xmlschema }}">{{ include.post.date | date: "%B %d, %Y" }}</time>
+        {% include reading-time.html post=include.post %}
+        {% assign view_count = site.data.views[include.post.url] %}
+        {% assign tags = include.post.tags %}
+    {% else %}
+        <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%B %d, %Y" }}</time>
+        {% include reading-time.html %}
+        {% assign view_count = site.data.views[page.url] %}
+        {% assign tags = page.tags %}
+    {% endif %}
     {% if view_count and view_count > 0 %}
         <span class="view-count">{{ view_count | number_with_delimiter }} view{% if view_count != 1 %}s{% endif %}</span>
     {% endif %}
-    {% if include.post.tags %}
+    {% if tags %}
         <div class="post-tags">
-            {% for tag in include.post.tags %}
+            {% for tag in tags %}
                 <a href="/tags/#{{ tag | slugify }}" class="tag">{% include tag-to-display.html tag=tag %}</a>
             {% endfor %}
         </div>
