@@ -1,0 +1,63 @@
+{% comment %}
+Generate pre-computed tag data to avoid O(n×m) complexity
+This include generates JSON data with all tag→post mappings
+{% endcomment %}
+
+{% assign tag_data = "" | split: "" %}
+{% assign all_tags = site.tags | sort %}
+
+{% for tag_pair in all_tags %}
+  {% assign tag_name = tag_pair[0] %}
+  {% assign tag_posts = tag_pair[1] %}
+  
+  {% assign tag_entry = "" | split: "" %}
+  {% assign tag_entry = tag_entry | push: tag_name %}
+  
+  {% assign post_list = "" | split: "" %}
+  {% for post in tag_posts %}
+    {% assign post_data = "" | split: "" %}
+    {% assign post_data = post_data | push: post.title %}
+    {% assign post_data = post_data | push: post.url %}
+    {% assign post_data = post_data | push: post.date %}
+    {% assign post_list = post_list | push: post_data %}
+  {% endfor %}
+  
+  {% assign tag_entry = tag_entry | push: post_list %}
+  {% assign tag_data = tag_data | push: tag_entry %}
+{% endfor %}
+
+{
+  "tags": {
+    {% for tag_pair in all_tags %}
+      {% assign tag_name = tag_pair[0] %}
+      {% assign tag_posts = tag_pair[1] %}
+      "{{ tag_name | slugify }}": {
+        "name": {{ tag_name | jsonify }},
+        "display_name": {{ tag_name | replace: "-", " " | replace: "ai", "AI" | replace: "ml", "ML" | capitalize | jsonify }},
+        "count": {{ tag_posts.size }},
+        "posts": [
+          {% for post in tag_posts %}
+          {
+            "title": {{ post.title | jsonify }},
+            "url": {{ post.url | jsonify }},
+            "date": {{ post.date | date: "%b %d, %Y" | jsonify }},
+            "iso_date": {{ post.date | date: "%Y-%m-%d" | jsonify }}
+          }{% unless forloop.last %},{% endunless %}
+          {% endfor %}
+        ]
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  },
+  "tag_list": [
+    {% for tag_pair in all_tags %}
+      {% assign tag_name = tag_pair[0] %}
+      {% assign tag_posts = tag_pair[1] %}
+      {
+        "slug": {{ tag_name | slugify | jsonify }},
+        "name": {{ tag_name | jsonify }},
+        "display_name": {{ tag_name | replace: "-", " " | replace: "ai", "AI" | replace: "ml", "ML" | capitalize | jsonify }},
+        "count": {{ tag_posts.size }}
+      }{% unless forloop.last %},{% endunless %}
+    {% endfor %}
+  ]
+}

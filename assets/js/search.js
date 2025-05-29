@@ -1,31 +1,49 @@
-// Efficient client-side search with lunr.js
+// Instant search with pre-built lunr index
 let searchIndex = null;
 let searchData = [];
 let selectedIndex = -1;
 
-// Load search data and build lunr index
-fetch('/search.json')
+// Load pre-built search index
+fetch('/_data/search/search-lunr-index.json')
     .then(response => response.json())
     .then(data => {
         searchData = data.posts;
         
-        // Build lunr index
-        searchIndex = lunr(function () {
-            this.ref('id');
-            this.field('title', { boost: 10 });
-            this.field('tags', { boost: 5 });
-            this.field('excerpt');
-            
-            searchData.forEach(function (post) {
-                this.add(post);
-            }, this);
-        });
+        // Load pre-built lunr index - instant!
+        searchIndex = lunr.Index.load(JSON.parse(data.index));
         
-        console.log('Search index built for', searchData.length, 'posts');
+        console.log('Pre-built search index loaded for', searchData.length, 'posts');
+        console.log('Generated:', data.generated);
     })
     .catch(error => {
-        console.error('Failed to load search data:', error);
+        console.error('Failed to load pre-built search index, falling back to runtime build:', error);
+        // Fallback to old method if pre-built index fails
+        fallbackToRuntimeIndex();
     });
+
+// Fallback to building index at runtime if pre-built fails
+function fallbackToRuntimeIndex() {
+    fetch('/_data/search/search-index.json')
+        .then(response => response.json())
+        .then(data => {
+            searchData = data.posts;
+            
+            searchIndex = lunr(function () {
+                this.ref('id');
+                this.field('title', { boost: 10 });
+                this.field('tags', { boost: 5 });
+                
+                searchData.forEach(function (post) {
+                    this.add(post);
+                }, this);
+            });
+            
+            console.log('Fallback: Search index built at runtime for', searchData.length, 'posts');
+        })
+        .catch(error => {
+            console.error('Failed to load search data:', error);
+        });
+}
 
 // Perform search using lunr index
 function performSearch(query) {
@@ -74,7 +92,7 @@ function displayResults(results, query) {
     const resultsHTML = results.map(result => `
         <div class="search-result" data-url="${result.url}">
             <div class="search-title">${result.title}</div>
-            <div class="search-meta">${result.date} • ${result.tags || 'No tags'}</div>
+            <div class="search-meta">${result.date}${result.tags ? ' • ' + result.tags : ''}</div>
         </div>
     `).join('');
     

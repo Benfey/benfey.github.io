@@ -1,0 +1,76 @@
+---
+layout: default
+title: Archive
+permalink: /archive/
+---
+
+<h1>All Posts</h1>
+
+<div class="sort-controls">
+    <label for="sort-select">Sort by:</label>
+    <select id="sort-select">
+        <option value="newest">Newest First</option>
+        <option value="oldest">Oldest First</option>
+        <option value="views-high">Most Views</option>
+        <option value="views-low">Least Views</option>
+    </select>
+</div>
+
+<!-- Posts container - dynamically loaded -->
+<ul class="post-list" id="posts-list">
+    {% for post in site.posts limit: 20 %}
+        {% include post-list-item.html post=post excerpt_limit=30 %}
+    {% endfor %}
+</ul>
+
+<!-- Pagination controls -->
+{% assign total_posts = site.posts.size %}
+{% assign posts_per_page = 20 %}
+{% assign total_pages = total_posts | divided_by: posts_per_page | ceil %}
+
+{% if total_pages > 1 %}
+<div class="archive-pagination">
+    <div class="pagination-info">
+        <span id="pagination-status">Showing 1-{{ posts_per_page | at_most: total_posts }} of {{ total_posts }} posts</span>
+    </div>
+    
+    <div class="pagination-controls">
+        <button id="prev-page" class="pagination-link" disabled>&laquo; Previous</button>
+        <span class="page-numbers" id="page-numbers">
+            {% for page in (1..total_pages) %}
+                {% if page <= 5 %}
+                    <button class="page-number{% if page == 1 %} active{% endif %}" data-page="{{ page }}">{{ page }}</button>
+                {% endif %}
+            {% endfor %}
+            {% if total_pages > 5 %}
+                <span class="page-ellipsis">...</span>
+            {% endif %}
+        </span>
+        <button id="next-page" class="pagination-link"{% if total_pages == 1 %} disabled{% endif %}>Next &raquo;</button>
+    </div>
+</div>
+{% endif %}
+
+<script>
+// Make data available to archive pagination
+window.archiveData = {
+    allPosts: [
+        {% for post in site.posts %}
+        {
+            id: {{ forloop.index0 }},
+            title: {{ post.title | jsonify }},
+            url: {{ post.url | jsonify }},
+            date: {{ post.date | date: "%b %d, %Y" | jsonify }},
+            iso_date: {{ post.date | date: "%Y-%m-%d" | jsonify }},
+            tags: {{ post.tags | join: " " | jsonify }},
+            excerpt: {{ post.excerpt | strip_html | truncatewords: 30 | jsonify }},
+            reading_time: {% assign words = post.content | number_of_words %}{% assign reading_time = words | divided_by: 200 %}{% if reading_time < 1 %}"< 1 min read"{% else %}"{{ reading_time }} min read"{% endif %}
+        }{% unless forloop.last %},{% endunless %}
+        {% endfor %}
+    ],
+    viewData: {{ site.data.views | jsonify }},
+    postsPerPage: {{ posts_per_page }},
+    totalPosts: {{ total_posts }},
+    totalPages: {{ total_pages }}
+};
+</script>

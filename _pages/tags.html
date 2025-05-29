@@ -1,0 +1,106 @@
+---
+layout: default
+title: Tag Archive
+permalink: /tags/
+---
+
+<h1>Browse by Tag</h1>
+
+<!-- Loading indicator -->
+<div id="tags-loading" style="text-align: center; padding: 2rem;">
+    <div>Loading tags...</div>
+</div>
+
+<!-- Tags will be rendered here -->
+<div class="tags-overview" id="tags-container" style="display: none;">
+    <!-- Tags dynamically loaded via JavaScript -->
+</div>
+
+<script>
+// Load and render tags from pre-computed data
+fetch('/_data/tags/tag-data.json')
+    .then(response => response.json())
+    .then(data => {
+        window.tagData = data;
+        renderTags(data);
+        initTagShowMore();
+    })
+    .catch(error => {
+        console.error('Failed to load tag data:', error);
+        document.getElementById('tags-loading').innerHTML = '<div>Failed to load tags</div>';
+    });
+
+function renderTags(data) {
+    const container = document.getElementById('tags-container');
+    const loading = document.getElementById('tags-loading');
+    
+    if (!container || !data.tag_list) return;
+    
+    // Generate HTML for all tags
+    const tagsHTML = data.tag_list.map(tag => {
+        const tagInfo = data.tags[tag.slug];
+        if (!tagInfo) return '';
+        
+        const visiblePosts = tagInfo.posts.slice(0, 10);
+        const hiddenPosts = tagInfo.posts.slice(10);
+        
+        let postsHTML = visiblePosts.map(post => 
+            `<li>
+                <a href="${post.url}">${post.title}</a>
+                <time>${post.date}</time>
+            </li>`
+        ).join('');
+        
+        // Add show more button and hidden posts if needed
+        if (hiddenPosts.length > 0) {
+            const hiddenPostsHTML = hiddenPosts.map(post => 
+                `<li>
+                    <a href="${post.url}">${post.title}</a>
+                    <time>${post.date}</time>
+                </li>`
+            ).join('');
+            
+            postsHTML += `
+                <li class="show-more">
+                    <button class="show-more-btn" data-tag="${tag.slug}">
+                        Show ${hiddenPosts.length} more posts...
+                    </button>
+                    <ul class="hidden-posts" id="hidden-${tag.slug}" style="display: none;">
+                        ${hiddenPostsHTML}
+                    </ul>
+                </li>
+            `;
+        }
+        
+        return `
+            <div class="tag-section">
+                <h2 id="${tag.slug}">
+                    ${tag.display_name}
+                    <span class="tag-count">(${tag.count})</span>
+                </h2>
+                <ul class="tag-posts">
+                    ${postsHTML}
+                </ul>
+            </div>
+        `;
+    }).join('');
+    
+    container.innerHTML = tagsHTML;
+    loading.style.display = 'none';
+    container.style.display = 'block';
+}
+
+function initTagShowMore() {
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('show-more-btn')) {
+            const tagSlug = e.target.dataset.tag;
+            const hiddenPosts = document.getElementById(`hidden-${tagSlug}`);
+            
+            if (hiddenPosts) {
+                hiddenPosts.style.display = 'block';
+                e.target.style.display = 'none';
+            }
+        }
+    });
+}
+</script>
