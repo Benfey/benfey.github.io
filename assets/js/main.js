@@ -31,6 +31,11 @@ function initClickablePosts() {
     });
 }
 
+function getPostViews(postElement) {
+    const url = postElement.querySelector('h2 a').getAttribute('href');
+    return window.viewData[url] || 0;
+}
+
 function initArchiveSorting() {
     const sortSelect = document.getElementById('sort-select');
     const postsList = document.getElementById('posts-list');
@@ -48,22 +53,10 @@ function initArchiveSorting() {
                 sortedPosts.reverse();
                 break;
             case 'views-high':
-                sortedPosts.sort((a, b) => {
-                    const urlA = a.querySelector('h2 a').getAttribute('href');
-                    const urlB = b.querySelector('h2 a').getAttribute('href');
-                    const viewsA = viewData[urlA] || 0;
-                    const viewsB = viewData[urlB] || 0;
-                    return viewsB - viewsA;
-                });
+                sortedPosts.sort((a, b) => getPostViews(b) - getPostViews(a));
                 break;
             case 'views-low':
-                sortedPosts.sort((a, b) => {
-                    const urlA = a.querySelector('h2 a').getAttribute('href');
-                    const urlB = b.querySelector('h2 a').getAttribute('href');
-                    const viewsA = viewData[urlA] || 0;
-                    const viewsB = viewData[urlB] || 0;
-                    return viewsA - viewsB;
-                });
+                sortedPosts.sort((a, b) => getPostViews(a) - getPostViews(b));
                 break;
             default: // newest
                 // Already in newest order

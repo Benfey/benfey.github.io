@@ -2,11 +2,7 @@
 <div class="post-meta">
     <time datetime="{{ post_data.date | date_to_xmlschema }}">{{ post_data.date | date: "%B %d, %Y" }}</time>
     
-    {% if include.post %}
-        {% assign words = include.post.content | number_of_words %}
-    {% else %}
-        {% assign words = content | number_of_words %}
-    {% endif %}
+    {% assign words = post_data.content | number_of_words %}
     {% assign reading_time = words | divided_by: 200 %}
     <span class="reading-time">{% if reading_time < 1 %}< 1 min read{% else %}{{ reading_time }} min read{% endif %}</span>
     
