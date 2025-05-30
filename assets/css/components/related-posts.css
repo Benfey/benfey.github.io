@@ -48,6 +48,8 @@
     display: flex;
     flex-direction: column;
     height: 100%;
+    width: 100%;
+    min-width: 0;
 }
 
 .related-posts-list .post-item:hover {
@@ -98,6 +100,8 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.4rem;
+    min-width: 0;
+    width: 100%;
 }
 
 .related-posts-list .tag-compact {
