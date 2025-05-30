@@ -236,13 +236,26 @@ code {
     .highlight {
         max-width: 100%;
         overflow: hidden;
+        width: 100%;
+        box-sizing: border-box;
     }
     
     .highlight pre {
         padding: var(--spacing-sm);
         font-size: 0.8em;
         max-width: 100%;
+        width: 100%;
         overflow-x: auto;
+        box-sizing: border-box;
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
+    }
+    
+    .highlight code {
+        word-wrap: break-word;
+        overflow-wrap: break-word;
+        white-space: pre-wrap;
     }
     
     .copy-button {
