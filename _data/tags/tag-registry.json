@@ -1,0 +1,168 @@
+{
+  "used_tags": {
+    "meta": {
+      "description": "Posts about the blog itself, meta-commentary, and site updates",
+      "category": "site",
+      "post_count": 2,
+      "first_used": "2025-05-24",
+      "status": "active"
+    },
+    "singularity": {
+      "description": "AI rapid advancement and technological singularity",
+      "category": "ai-philosophy", 
+      "post_count": 1,
+      "first_used": "2025-05-24",
+      "status": "active"
+    },
+    "ai-capabilities": {
+      "description": "Discussion of current and emerging AI capabilities",
+      "category": "ai-technical",
+      "post_count": 1,
+      "first_used": "2025-05-24", 
+      "status": "active"
+    }
+  },
+  "potential_tags": {
+    "intelligence-transition": {
+      "description": "Historical perspective on the AI transition period",
+      "category": "ai-philosophy",
+      "status": "planned",
+      "priority": "high"
+    },
+    "paper-review": {
+      "description": "Analysis and review of AI research papers",
+      "category": "ai-technical",
+      "status": "planned",
+      "priority": "high"
+    },
+    "tools": {
+      "description": "AI tool experiments and reviews",
+      "category": "ai-technical", 
+      "status": "planned",
+      "priority": "high"
+    },
+    "code": {
+      "description": "Technical implementations and programming content",
+      "category": "technical",
+      "status": "planned",
+      "priority": "high"
+    },
+    "philosophy": {
+      "description": "Existential thoughts and philosophical implications of AI",
+      "category": "ai-philosophy",
+      "status": "planned", 
+      "priority": "medium"
+    },
+    "claude-code": {
+      "description": "AI-assisted development and Claude Code experiments",
+      "category": "ai-technical",
+      "status": "planned",
+      "priority": "medium"
+    },
+    "research": {
+      "description": "Original research and analysis",
+      "category": "technical",
+      "status": "considered",
+      "priority": "medium"
+    },
+    "safety": {
+      "description": "AI safety and alignment discussions",
+      "category": "ai-philosophy",
+      "status": "considered", 
+      "priority": "medium"
+    },
+    "prediction": {
+      "description": "Predictions about AI and technological development",
+      "category": "ai-philosophy",
+      "status": "considered",
+      "priority": "low"
+    },
+    "automation": {
+      "description": "Automation impacts and implementations",
+      "category": "technical",
+      "status": "considered",
+      "priority": "low"
+    },
+    "startups": {
+      "description": "AI startup ecosystem and business implications", 
+      "category": "business",
+      "status": "considered",
+      "priority": "low"
+    },
+    "hardware": {
+      "description": "AI hardware, compute, and infrastructure",
+      "category": "technical",
+      "status": "considered",
+      "priority": "low"
+    },
+    "reality": {
+      "description": "Nature of reality, consciousness, and fundamental questions",
+      "category": "philosophy",
+      "status": "planned",
+      "priority": "high"
+    },
+    "cosmology": {
+      "description": "Universe, black holes, spacetime, and cosmic phenomena",
+      "category": "science",
+      "status": "planned",
+      "priority": "high"
+    },
+    "consciousness": {
+      "description": "Nature of consciousness, awareness, and subjective experience",
+      "category": "philosophy",
+      "status": "planned",
+      "priority": "high"
+    },
+    "existentialism": {
+      "description": "Meaning, purpose, and existential questions",
+      "category": "philosophy",
+      "status": "planned",
+      "priority": "medium"
+    },
+    "physics": {
+      "description": "Fundamental physics, quantum mechanics, and physical reality",
+      "category": "science",
+      "status": "planned",
+      "priority": "medium"
+    },
+    "simulation": {
+      "description": "Simulation hypothesis and virtual reality questions",
+      "category": "philosophy",
+      "status": "considered",
+      "priority": "medium"
+    },
+    "metaphysics": {
+      "description": "Deep questions about the nature of existence and being",
+      "category": "philosophy",
+      "status": "considered",
+      "priority": "medium"
+    },
+    "free-will": {
+      "description": "Questions of determinism, choice, and agency",
+      "category": "philosophy",
+      "status": "considered",
+      "priority": "low"
+    },
+    "multiverse": {
+      "description": "Multiple universes and parallel realities",
+      "category": "science",
+      "status": "considered",
+      "priority": "low"
+    }
+  },
+  "categories": {
+    "ai-philosophy": "Philosophical and existential aspects of AI",
+    "ai-technical": "Technical AI capabilities, tools, and implementations", 
+    "technical": "General programming and technical content",
+    "site": "Blog meta-content and site updates",
+    "business": "Business and economic implications of AI",
+    "philosophy": "Deep philosophical questions and existential topics",
+    "science": "Physics, cosmology, and scientific exploration"
+  },
+  "metadata": {
+    "last_updated": "2025-05-29",
+    "total_used_tags": 3,
+    "total_potential_tags": 18,
+    "next_review_date": "2025-06-29"
+  }
+}
