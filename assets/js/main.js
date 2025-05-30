@@ -4,6 +4,7 @@ import { initArchiveSorting, initArchivePagination } from './modules/archive.js'
 import { initGiscusRefresh } from './modules/comments.js';
 import { initTagShowMore } from './modules/tags.js';
 import { initViewData } from './modules/viewData.js';
+import { initCodeBlocks } from './modules/codeBlocks.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     // Initialize view data if available
@@ -33,6 +34,9 @@ document.addEventListener('DOMContentLoaded', function() {
     if (document.querySelector('.show-more-btn')) {
         initTagShowMore();
     }
+    
+    // Initialize code block copy functionality
+    initCodeBlocks();
 });
 
 // Export functions for backward compatibility

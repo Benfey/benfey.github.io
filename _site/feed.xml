@@ -1,4 +1,223 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="https://benfey.github.io/feed.xml" rel="self" type="application/atom+xml" /><link href="https://benfey.github.io/" rel="alternate" type="text/html" /><updated>2025-05-29T00:45:48-03:00</updated><id>https://benfey.github.io/feed.xml</id><title type="html">The Intelligence Transition</title><subtitle>Thoughts on AI, papers, tools, and experiments</subtitle><entry><title type="html">The Singularity</title><link href="https://benfey.github.io/2025/05/24/the-singularity/" rel="alternate" type="text/html" title="The Singularity" /><published>2025-05-24T00:00:00-03:00</published><updated>2025-05-24T00:00:00-03:00</updated><id>https://benfey.github.io/2025/05/24/the-singularity</id><content type="html" xml:base="https://benfey.github.io/2025/05/24/the-singularity/"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-29T23:06:34-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">The Intelligence Transition</title><subtitle>Thoughts on AI, papers, tools, and experiments</subtitle><entry><title type="html">Enhanced Code Display: Syntax Highlighting for AI Research</title><link href="http://localhost:4000/2025/05/29/enhanced-code-display/" rel="alternate" type="text/html" title="Enhanced Code Display: Syntax Highlighting for AI Research" /><published>2025-05-29T00:00:00-03:00</published><updated>2025-05-29T00:00:00-03:00</updated><id>http://localhost:4000/2025/05/29/enhanced-code-display</id><content type="html" xml:base="http://localhost:4000/2025/05/29/enhanced-code-display/"><![CDATA[<p>I just enhanced this blog’s code display capabilities with proper syntax highlighting and copy functionality. Since I’ll be sharing a lot of AI experiments, research implementations, and technical analysis here, readable code formatting is essential.</p>
+
+<h2 id="whats-new">What’s New</h2>
+
+<p><strong>Dark Theme Syntax Highlighting</strong>: Color-coded syntax that matches the blog’s forest green aesthetic, optimized for technical readability.</p>
+
+<p><strong>Copy-to-Clipboard</strong>: One-click copying of code blocks with visual feedback.</p>
+
+<p><strong>Language Labels</strong>: Clear identification of programming languages.</p>
+
+<p><strong>Mobile Responsive</strong>: Proper formatting on all screen sizes.</p>
+
+<h2 id="examples">Examples</h2>
+
+<p>Here’s a Python implementation of a simple neural network layer:</p>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kn">import</span> <span class="n">torch</span>
+<span class="kn">import</span> <span class="n">torch.nn</span> <span class="k">as</span> <span class="n">nn</span>
+<span class="kn">import</span> <span class="n">torch.nn.functional</span> <span class="k">as</span> <span class="n">F</span>
+
+<span class="k">class</span> <span class="nc">AttentionLayer</span><span class="p">(</span><span class="n">nn</span><span class="p">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">d_model</span><span class="p">,</span> <span class="n">n_heads</span><span class="p">):</span>
+        <span class="nf">super</span><span class="p">().</span><span class="nf">__init__</span><span class="p">()</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">d_model</span> <span class="o">=</span> <span class="n">d_model</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">n_heads</span> <span class="o">=</span> <span class="n">n_heads</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">head_dim</span> <span class="o">=</span> <span class="n">d_model</span> <span class="o">//</span> <span class="n">n_heads</span>
+        
+        <span class="n">self</span><span class="p">.</span><span class="n">q_linear</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">k_linear</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">v_linear</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+        <span class="n">self</span><span class="p">.</span><span class="n">out_linear</span> <span class="o">=</span> <span class="n">nn</span><span class="p">.</span><span class="nc">Linear</span><span class="p">(</span><span class="n">d_model</span><span class="p">,</span> <span class="n">d_model</span><span class="p">)</span>
+        
+    <span class="k">def</span> <span class="nf">forward</span><span class="p">(</span><span class="n">self</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">,</span> <span class="n">mask</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+        <span class="n">batch_size</span> <span class="o">=</span> <span class="n">query</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
+        <span class="n">seq_len</span> <span class="o">=</span> <span class="n">query</span><span class="p">.</span><span class="nf">size</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+        
+        <span class="c1"># Linear transformations and reshape
+</span>        <span class="n">Q</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">q_linear</span><span class="p">(</span><span class="n">query</span><span class="p">).</span><span class="nf">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">n_heads</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">head_dim</span><span class="p">)</span>
+        <span class="n">K</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">k_linear</span><span class="p">(</span><span class="n">key</span><span class="p">).</span><span class="nf">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">n_heads</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">head_dim</span><span class="p">)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">v_linear</span><span class="p">(</span><span class="n">value</span><span class="p">).</span><span class="nf">view</span><span class="p">(</span><span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">n_heads</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">head_dim</span><span class="p">)</span>
+        
+        <span class="c1"># Transpose for attention computation
+</span>        <span class="n">Q</span> <span class="o">=</span> <span class="n">Q</span><span class="p">.</span><span class="nf">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>  <span class="c1"># (batch, heads, seq_len, head_dim)
+</span>        <span class="n">K</span> <span class="o">=</span> <span class="n">K</span><span class="p">.</span><span class="nf">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        <span class="n">V</span> <span class="o">=</span> <span class="n">V</span><span class="p">.</span><span class="nf">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+        
+        <span class="c1"># Scaled dot-product attention
+</span>        <span class="n">attention</span> <span class="o">=</span> <span class="n">self</span><span class="p">.</span><span class="nf">scaled_dot_product_attention</span><span class="p">(</span><span class="n">Q</span><span class="p">,</span> <span class="n">K</span><span class="p">,</span> <span class="n">V</span><span class="p">,</span> <span class="n">mask</span><span class="p">)</span>
+        
+        <span class="c1"># Concatenate heads and put through final linear layer
+</span>        <span class="n">concat</span> <span class="o">=</span> <span class="n">attention</span><span class="p">.</span><span class="nf">transpose</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">).</span><span class="nf">contiguous</span><span class="p">().</span><span class="nf">view</span><span class="p">(</span>
+            <span class="n">batch_size</span><span class="p">,</span> <span class="n">seq_len</span><span class="p">,</span> <span class="n">self</span><span class="p">.</span><span class="n">d_model</span>
+        <span class="p">)</span>
+        
+        <span class="k">return</span> <span class="n">self</span><span class="p">.</span><span class="nf">out_linear</span><span class="p">(</span><span class="n">concat</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>JavaScript for building AI experiment interfaces:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">class</span> <span class="nc">ExperimentRunner</span> <span class="p">{</span>
+    <span class="nf">constructor</span><span class="p">(</span><span class="nx">config</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">config</span> <span class="o">=</span> <span class="nx">config</span><span class="p">;</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">results</span> <span class="o">=</span> <span class="p">[];</span>
+        <span class="k">this</span><span class="p">.</span><span class="nx">isRunning</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+    <span class="p">}</span>
+    
+    <span class="k">async</span> <span class="nf">runExperiment</span><span class="p">(</span><span class="nx">params</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if </span><span class="p">(</span><span class="k">this</span><span class="p">.</span><span class="nx">isRunning</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">throw</span> <span class="k">new</span> <span class="nc">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">Experiment already running</span><span class="dl">'</span><span class="p">);</span>
+        <span class="p">}</span>
+        
+        <span class="k">this</span><span class="p">.</span><span class="nx">isRunning</span> <span class="o">=</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="kd">const</span> <span class="nx">startTime</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nf">now</span><span class="p">();</span>
+        
+        <span class="k">try</span> <span class="p">{</span>
+            <span class="c1">// Simulate API call to ML model</span>
+            <span class="kd">const</span> <span class="nx">response</span> <span class="o">=</span> <span class="k">await</span> <span class="nf">fetch</span><span class="p">(</span><span class="dl">'</span><span class="s1">/api/inference</span><span class="dl">'</span><span class="p">,</span> <span class="p">{</span>
+                <span class="na">method</span><span class="p">:</span> <span class="dl">'</span><span class="s1">POST</span><span class="dl">'</span><span class="p">,</span>
+                <span class="na">headers</span><span class="p">:</span> <span class="p">{</span> <span class="dl">'</span><span class="s1">Content-Type</span><span class="dl">'</span><span class="p">:</span> <span class="dl">'</span><span class="s1">application/json</span><span class="dl">'</span> <span class="p">},</span>
+                <span class="na">body</span><span class="p">:</span> <span class="nx">JSON</span><span class="p">.</span><span class="nf">stringify</span><span class="p">({</span>
+                    <span class="na">model</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">.</span><span class="nx">model</span><span class="p">,</span>
+                    <span class="na">prompt</span><span class="p">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">prompt</span><span class="p">,</span>
+                    <span class="na">temperature</span><span class="p">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">temperature</span> <span class="o">||</span> <span class="mf">0.7</span><span class="p">,</span>
+                    <span class="na">max_tokens</span><span class="p">:</span> <span class="nx">params</span><span class="p">.</span><span class="nx">max_tokens</span> <span class="o">||</span> <span class="mi">150</span>
+                <span class="p">})</span>
+            <span class="p">});</span>
+            
+            <span class="kd">const</span> <span class="nx">result</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">response</span><span class="p">.</span><span class="nf">json</span><span class="p">();</span>
+            <span class="kd">const</span> <span class="nx">duration</span> <span class="o">=</span> <span class="nx">performance</span><span class="p">.</span><span class="nf">now</span><span class="p">()</span> <span class="o">-</span> <span class="nx">startTime</span><span class="p">;</span>
+            
+            <span class="k">this</span><span class="p">.</span><span class="nx">results</span><span class="p">.</span><span class="nf">push</span><span class="p">({</span>
+                <span class="nx">params</span><span class="p">,</span>
+                <span class="na">result</span><span class="p">:</span> <span class="nx">result</span><span class="p">.</span><span class="nx">text</span><span class="p">,</span>
+                <span class="nx">duration</span><span class="p">,</span>
+                <span class="na">timestamp</span><span class="p">:</span> <span class="k">new</span> <span class="nc">Date</span><span class="p">().</span><span class="nf">toISOString</span><span class="p">()</span>
+            <span class="p">});</span>
+            
+            <span class="k">return</span> <span class="nx">result</span><span class="p">;</span>
+        <span class="p">}</span> <span class="k">finally</span> <span class="p">{</span>
+            <span class="k">this</span><span class="p">.</span><span class="nx">isRunning</span> <span class="o">=</span> <span class="kc">false</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+    
+    <span class="nf">exportResults</span><span class="p">()</span> <span class="p">{</span>
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="na">config</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">config</span><span class="p">,</span>
+            <span class="na">results</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nx">results</span><span class="p">,</span>
+            <span class="na">summary</span><span class="p">:</span> <span class="k">this</span><span class="p">.</span><span class="nf">generateSummary</span><span class="p">()</span>
+        <span class="p">};</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Shell scripts for automation:</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c">#!/bin/bash</span>
+
+<span class="c"># AI experiment pipeline automation</span>
+<span class="nb">set</span> <span class="nt">-euo</span> pipefail
+
+<span class="nv">EXPERIMENT_DIR</span><span class="o">=</span><span class="s2">"./experiments"</span>
+<span class="nv">MODEL_CONFIG</span><span class="o">=</span><span class="s2">"config/gpt4.yaml"</span>
+<span class="nv">OUTPUT_DIR</span><span class="o">=</span><span class="s2">"./results/</span><span class="si">$(</span><span class="nb">date</span> +%Y%m%d_%H%M%S<span class="si">)</span><span class="s2">"</span>
+
+<span class="nb">echo</span> <span class="s2">"🧪 Starting AI experiment pipeline..."</span>
+
+<span class="c"># Create output directory</span>
+<span class="nb">mkdir</span> <span class="nt">-p</span> <span class="s2">"</span><span class="nv">$OUTPUT_DIR</span><span class="s2">"</span>
+
+<span class="c"># Run experiments in parallel</span>
+<span class="k">for </span>experiment <span class="k">in</span> <span class="s2">"</span><span class="nv">$EXPERIMENT_DIR</span><span class="s2">"</span>/<span class="k">*</span>.yaml<span class="p">;</span> <span class="k">do
+    </span><span class="nv">experiment_name</span><span class="o">=</span><span class="si">$(</span><span class="nb">basename</span> <span class="s2">"</span><span class="nv">$experiment</span><span class="s2">"</span> .yaml<span class="si">)</span>
+    <span class="nb">echo</span> <span class="s2">"Running experiment: </span><span class="nv">$experiment_name</span><span class="s2">"</span>
+    
+    python run_experiment.py <span class="se">\</span>
+        <span class="nt">--config</span> <span class="s2">"</span><span class="nv">$experiment</span><span class="s2">"</span> <span class="se">\</span>
+        <span class="nt">--model-config</span> <span class="s2">"</span><span class="nv">$MODEL_CONFIG</span><span class="s2">"</span> <span class="se">\</span>
+        <span class="nt">--output</span> <span class="s2">"</span><span class="nv">$OUTPUT_DIR</span><span class="s2">/</span><span class="nv">$experiment_name</span><span class="s2">.json"</span> &amp;
+<span class="k">done</span>
+
+<span class="c"># Wait for all experiments to complete</span>
+<span class="nb">wait
+
+echo</span> <span class="s2">"✅ All experiments completed. Results in: </span><span class="nv">$OUTPUT_DIR</span><span class="s2">"</span>
+
+<span class="c"># Generate summary report</span>
+python generate_report.py <span class="se">\</span>
+    <span class="nt">--input-dir</span> <span class="s2">"</span><span class="nv">$OUTPUT_DIR</span><span class="s2">"</span> <span class="se">\</span>
+    <span class="nt">--output</span> <span class="s2">"</span><span class="nv">$OUTPUT_DIR</span><span class="s2">/summary.html"</span>
+</code></pre></div></div>
+
+<p>And configuration files in YAML:</p>
+
+<div class="language-yaml highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1"># AI model configuration</span>
+<span class="na">model</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">gpt-4-turbo"</span>
+  <span class="na">temperature</span><span class="pi">:</span> <span class="m">0.7</span>
+  <span class="na">max_tokens</span><span class="pi">:</span> <span class="m">2048</span>
+  
+<span class="na">experiment</span><span class="pi">:</span>
+  <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">paper-summarization"</span>
+  <span class="na">description</span><span class="pi">:</span> <span class="s2">"</span><span class="s">Evaluate</span><span class="nv"> </span><span class="s">AI's</span><span class="nv"> </span><span class="s">ability</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">summarize</span><span class="nv"> </span><span class="s">research</span><span class="nv"> </span><span class="s">papers"</span>
+  
+  <span class="na">datasets</span><span class="pi">:</span>
+    <span class="pi">-</span> <span class="na">name</span><span class="pi">:</span> <span class="s2">"</span><span class="s">arxiv-cs-ai"</span>
+      <span class="na">path</span><span class="pi">:</span> <span class="s2">"</span><span class="s">data/arxiv_papers.jsonl"</span>
+      <span class="na">sample_size</span><span class="pi">:</span> <span class="m">100</span>
+      
+  <span class="na">evaluation</span><span class="pi">:</span>
+    <span class="na">metrics</span><span class="pi">:</span>
+      <span class="pi">-</span> <span class="s">rouge_l</span>
+      <span class="pi">-</span> <span class="s">semantic_similarity</span>
+      <span class="pi">-</span> <span class="s">factual_accuracy</span>
+      
+  <span class="na">prompts</span><span class="pi">:</span>
+    <span class="na">base</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">Summarize the following research paper in 2-3 sentences, </span>
+      <span class="s">focusing on the key contribution and methodology:</span>
+      
+      <span class="s">{paper_text}</span>
+      
+    <span class="na">few_shot</span><span class="pi">:</span> <span class="pi">|</span>
+      <span class="s">Here are examples of good summaries:</span>
+      <span class="s">[examples...]</span>
+      
+      <span class="s">Now summarize this paper:</span>
+      <span class="s">{paper_text}</span>
+</code></pre></div></div>
+
+<h2 id="technical-implementation">Technical Implementation</h2>
+
+<p>The syntax highlighting uses Rouge (Jekyll’s default) with a custom dark theme CSS that integrates with the blog’s existing design system. The copy functionality is pure JavaScript with fallbacks for older browsers.</p>
+
+<p>This enhancement makes the blog much better suited for sharing AI research implementations, tool experiments, and technical analysis. Now when I write about interesting papers or build AI tools, the code will be properly formatted and easy to copy.</p>
+
+<p>Perfect timing as I dive deeper into AI research and experimentation!</p>]]></content><author><name>Anton</name></author><category term="code" /><category term="claude-code" /><category term="tools" /><category term="blog-development" /><summary type="html"><![CDATA[I just enhanced this blog’s code display capabilities with proper syntax highlighting and copy functionality. Since I’ll be sharing a lot of AI experiments, research implementations, and technical analysis here, readable code formatting is essential.]]></summary></entry><entry><title type="html">Setting up this blog</title><link href="http://localhost:4000/2025/05/24/first-post/" rel="alternate" type="text/html" title="Setting up this blog" /><published>2025-05-24T00:00:00-03:00</published><updated>2025-05-24T00:00:00-03:00</updated><id>http://localhost:4000/2025/05/24/first-post</id><content type="html" xml:base="http://localhost:4000/2025/05/24/first-post/"><![CDATA[<p>The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:</p>
+
+<ul>
+  <li>Papers I’ve read</li>
+  <li>Tools I’m experimenting with</li>
+  <li>Random AI thoughts and observations</li>
+  <li>Code experiments and results</li>
+  <li>The implications of AI</li>
+</ul>
+
+<p>Let’s see if styling works:</p>
+
+<h2 id="code-blocks-work-nicely">Code blocks work nicely</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello_ai</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Ready to write about AI stuff!</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Bold text</strong> and <em>italic text</em> look good. Links should work too.</p>
+
+<blockquote>
+  <p>Block quotes for when I want to highlight something important from a paper</p>
+</blockquote>
+
+<p>Time to start writing actual content!</p>]]></content><author><name>Anton</name></author><category term="meta" /><summary type="html"><![CDATA[The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:]]></summary></entry><entry><title type="html">The Singularity</title><link href="http://localhost:4000/2025/05/24/the-singularity/" rel="alternate" type="text/html" title="The Singularity" /><published>2025-05-24T00:00:00-03:00</published><updated>2025-05-24T00:00:00-03:00</updated><id>http://localhost:4000/2025/05/24/the-singularity</id><content type="html" xml:base="http://localhost:4000/2025/05/24/the-singularity/"><![CDATA[<blockquote>
   <p><strong>The Singularity</strong> (n.): The moment when artificial intelligence progresses so rapidly that we can no longer predict or comprehend its trajectory. A technological tipping point where AI systems become capable of recursive self-improvement, fundamentally altering the nature of progress itself.</p>
 </blockquote>
 
@@ -33,28 +252,4 @@ We spent decades defining machine intelligence by whether it could fool us into 
 
 <p>I don’t know what our future will look like, but I feel a deep sense of wonder and excitement about finding out. This blog exists to document that journey.</p>
 
-<p>I’m here to witness the progress we’re making, as a curious and open-minded observer.</p>]]></content><author><name>Anton</name></author><category term="singularity" /><category term="ai-capabilities" /><category term="meta" /><summary type="html"><![CDATA[The Singularity (n.): The moment when artificial intelligence progresses so rapidly that we can no longer predict or comprehend its trajectory. A technological tipping point where AI systems become capable of recursive self-improvement, fundamentally altering the nature of progress itself.]]></summary></entry><entry><title type="html">Setting up this blog</title><link href="https://benfey.github.io/2025/05/24/first-post/" rel="alternate" type="text/html" title="Setting up this blog" /><published>2025-05-24T00:00:00-03:00</published><updated>2025-05-24T00:00:00-03:00</updated><id>https://benfey.github.io/2025/05/24/first-post</id><content type="html" xml:base="https://benfey.github.io/2025/05/24/first-post/"><![CDATA[<p>The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:</p>
-
-<ul>
-  <li>Papers I’ve read</li>
-  <li>Tools I’m experimenting with</li>
-  <li>Random AI thoughts and observations</li>
-  <li>Code experiments and results</li>
-  <li>The implications of AI</li>
-</ul>
-
-<p>Let’s see if styling works:</p>
-
-<h2 id="code-blocks-work-nicely">Code blocks work nicely</h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello_ai</span><span class="p">():</span>
-    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Ready to write about AI stuff!</span><span class="sh">"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><strong>Bold text</strong> and <em>italic text</em> look good. Links should work too.</p>
-
-<blockquote>
-  <p>Block quotes for when I want to highlight something important from a paper</p>
-</blockquote>
-
-<p>Time to start writing actual content!</p>]]></content><author><name>Anton</name></author><category term="meta" /><summary type="html"><![CDATA[The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:]]></summary></entry></feed>
+<p>I’m here to witness the progress we’re making, as a curious and open-minded observer.</p>]]></content><author><name>Anton</name></author><category term="singularity" /><category term="ai-capabilities" /><category term="meta" /><summary type="html"><![CDATA[The Singularity (n.): The moment when artificial intelligence progresses so rapidly that we can no longer predict or comprehend its trajectory. A technological tipping point where AI systems become capable of recursive self-improvement, fundamentally altering the nature of progress itself.]]></summary></entry></feed>

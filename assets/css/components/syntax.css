@@ -1,0 +1,250 @@
+/* Syntax Highlighting - Dark Theme */
+
+/* Base code styling */
+code {
+    background: var(--bg-secondary);
+    color: var(--text-accent);
+    padding: 0.2em 0.4em;
+    border-radius: var(--border-radius-sm);
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.85em;
+}
+
+/* Code blocks */
+.highlight {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+    margin: var(--spacing-md) 0;
+    position: relative;
+}
+
+.highlight pre {
+    background: transparent;
+    margin: 0;
+    padding: var(--spacing-md);
+    overflow-x: auto;
+    line-height: 1.4;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 0.85em;
+}
+
+.highlight code {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    color: var(--text-primary);
+}
+
+/* Language label */
+.highlighter-rouge::before {
+    content: attr(class);
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    padding: 0.3em 0.8em;
+    font-size: 0.7em;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    position: absolute;
+    top: 0;
+    right: 0;
+    border-radius: 0 var(--border-radius) 0 var(--border-radius-sm);
+    z-index: 2;
+}
+
+.language-python.highlighter-rouge::before { content: 'Python'; }
+.language-javascript.highlighter-rouge::before { content: 'JavaScript'; }
+.language-bash.highlighter-rouge::before { content: 'Bash'; }
+.language-json.highlighter-rouge::before { content: 'JSON'; }
+.language-yaml.highlighter-rouge::before { content: 'YAML'; }
+.language-html.highlighter-rouge::before { content: 'HTML'; }
+.language-css.highlighter-rouge::before { content: 'CSS'; }
+.language-sql.highlighter-rouge::before { content: 'SQL'; }
+.language-markdown.highlighter-rouge::before { content: 'Markdown'; }
+
+/* Copy button container */
+.code-block-wrapper {
+    position: relative;
+}
+
+.copy-button {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: var(--bg-accent);
+    color: var(--text-primary);
+    border: none;
+    padding: 0.4em 0.8em;
+    border-radius: var(--border-radius-sm);
+    font-size: 0.7em;
+    font-weight: 600;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: var(--transition);
+    z-index: 3;
+}
+
+.copy-button:hover {
+    opacity: 1;
+    background: var(--text-accent);
+    color: var(--bg-primary);
+}
+
+.copy-button:active {
+    transform: translateY(1px);
+}
+
+.copy-button.copied {
+    background: #22c55e;
+    color: white;
+}
+
+/* Rouge syntax highlighting tokens */
+
+/* Comments */
+.highlight .c,
+.highlight .ch,
+.highlight .cm,
+.highlight .cp,
+.highlight .cpf,
+.highlight .c1,
+.highlight .cs { 
+    color: #6b7280; 
+    font-style: italic; 
+}
+
+/* Keywords */
+.highlight .k,
+.highlight .kc,
+.highlight .kd,
+.highlight .kn,
+.highlight .kp,
+.highlight .kr,
+.highlight .kt { 
+    color: #a78bfa; 
+    font-weight: 600; 
+}
+
+/* Strings */
+.highlight .s,
+.highlight .sa,
+.highlight .sb,
+.highlight .sc,
+.highlight .dl,
+.highlight .sd,
+.highlight .s2,
+.highlight .se,
+.highlight .sh,
+.highlight .si,
+.highlight .sx,
+.highlight .sr,
+.highlight .s1,
+.highlight .ss { 
+    color: #4ade80; 
+}
+
+/* Numbers */
+.highlight .m,
+.highlight .mb,
+.highlight .mf,
+.highlight .mh,
+.highlight .mi,
+.highlight .mo,
+.highlight .il { 
+    color: #fbbf24; 
+}
+
+/* Function names */
+.highlight .nf,
+.highlight .fm { 
+    color: #60a5fa; 
+    font-weight: 500; 
+}
+
+/* Class names */
+.highlight .nc,
+.highlight .nn { 
+    color: #f472b6; 
+    font-weight: 500; 
+}
+
+/* Variables */
+.highlight .n,
+.highlight .na,
+.highlight .nb,
+.highlight .bp,
+.highlight .nv,
+.highlight .vc,
+.highlight .vg,
+.highlight .vi { 
+    color: var(--text-primary); 
+}
+
+/* Operators */
+.highlight .o,
+.highlight .ow { 
+    color: #fb7185; 
+    font-weight: 500; 
+}
+
+/* Punctuation */
+.highlight .p { 
+    color: #9ca3af; 
+}
+
+/* Line numbers (if enabled) */
+.highlight .lineno {
+    color: #6b7280;
+    background: var(--bg-primary);
+    padding-right: 1em;
+    margin-right: 1em;
+    border-right: 1px solid var(--border);
+    user-select: none;
+}
+
+/* Highlighted lines */
+.highlight .hll { 
+    background: rgba(74, 222, 128, 0.1); 
+    display: block; 
+    margin: 0 -1em; 
+    padding: 0 1em; 
+}
+
+/* Error highlighting */
+.highlight .err { 
+    color: #ef4444; 
+    background: rgba(239, 68, 68, 0.1); 
+}
+
+/* Generic highlighting */
+.highlight .g { color: var(--text-primary); }
+.highlight .gd { color: #ef4444; } /* Deleted */
+.highlight .ge { font-style: italic; } /* Emphasis */
+.highlight .gi { color: #22c55e; } /* Inserted */
+.highlight .gs { font-weight: bold; } /* Strong */
+.highlight .gu { color: #a78bfa; font-weight: bold; } /* Subheading */
+
+/* Language-specific adjustments */
+.language-bash .highlight .nv { color: #fbbf24; } /* Bash variables */
+.language-json .highlight .nt { color: #60a5fa; } /* JSON keys */
+.language-yaml .highlight .nt { color: #f472b6; } /* YAML keys */
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+    .highlight pre {
+        padding: var(--spacing-sm);
+        font-size: 0.8em;
+    }
+    
+    .copy-button {
+        padding: 0.3em 0.6em;
+        font-size: 0.65em;
+    }
+    
+    .highlighter-rouge::before {
+        padding: 0.2em 0.6em;
+        font-size: 0.65em;
+    }
+}
