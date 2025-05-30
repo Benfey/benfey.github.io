@@ -20,7 +20,7 @@ async function fetchViewCounts() {
     return new Promise((resolve, reject) => {
         const options = {
             hostname: 'benfey.goatcounter.com',
-            path: '/api/v0/stats/hits',
+            path: '/api/v0/stats/hits?start=2025-01-01&limit=100',
             method: 'GET',
             headers: {
                 'Authorization': `Bearer ${GOAT_TOKEN}`,
