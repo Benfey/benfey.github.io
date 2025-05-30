@@ -173,6 +173,15 @@
     margin-bottom: var(--spacing-xs);
 }
 
+.post-content img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 1.5rem auto;
+    border-radius: var(--border-radius);
+    border: 1px solid var(--border);
+}
+
 /* Post Comments */
 .post-comments {
     margin-top: 3rem;
