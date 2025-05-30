@@ -233,9 +233,16 @@ code {
 
 /* Mobile responsiveness */
 @media (max-width: 768px) {
+    .highlight {
+        max-width: 100%;
+        overflow: hidden;
+    }
+    
     .highlight pre {
         padding: var(--spacing-sm);
         font-size: 0.8em;
+        max-width: 100%;
+        overflow-x: auto;
     }
     
     .copy-button {
