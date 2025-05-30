@@ -1,0 +1,11 @@
+{% assign post_data = include.post | default: page %}
+<div class="post-meta-compact">
+    <div class="meta-info">
+        <time datetime="{{ post_data.date | date_to_xmlschema }}">{{ post_data.date | date: "%B %d, %Y" }}</time>{% assign view_count = site.data.views[post_data.url] %}{% if view_count and view_count > 0 %} | <span class="view-count">{{ view_count | number_with_delimiter }} view{% if view_count != 1 %}s{% endif %}</span>{% endif %}{% assign words = post_data.content | number_of_words %}{% assign reading_time = words | divided_by: 200.0 | ceil %} | <span class="reading-time">{{ reading_time }} min read</span>
+    </div>
+    {% if post_data.tags %}
+    <div class="meta-tags">
+        {% for tag in post_data.tags %}<span class="tag-compact">{% include tag-to-display.html tag=tag %}</span>{% endfor %}
+    </div>
+    {% endif %}
+</div>
