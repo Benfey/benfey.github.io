@@ -15,6 +15,10 @@ yarn-error.log*
 # Node modules (if using any)
 node_modules/
 
+# Local Claude instructions and settings
+CLAUDE.local.md
+.claude/
+
 # OS files
 .DS_Store
 Thumbs.db
