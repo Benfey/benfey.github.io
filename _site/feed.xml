@@ -1,4 +1,66 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-29T23:42:44-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">The Intelligence Transition</title><subtitle>Thoughts on AI, papers, tools, and experiments</subtitle><entry><title type="html">The Singularity</title><link href="http://localhost:4000/2025/05/24/the-singularity/" rel="alternate" type="text/html" title="The Singularity" /><published>2025-05-24T00:00:00-03:00</published><updated>2025-05-24T00:00:00-03:00</updated><id>http://localhost:4000/2025/05/24/the-singularity</id><content type="html" xml:base="http://localhost:4000/2025/05/24/the-singularity/"><![CDATA[<blockquote>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.4.1">Jekyll</generator><link href="http://localhost:4000/feed.xml" rel="self" type="application/atom+xml" /><link href="http://localhost:4000/" rel="alternate" type="text/html" /><updated>2025-05-30T00:36:54-03:00</updated><id>http://localhost:4000/feed.xml</id><title type="html">The Intelligence Transition</title><subtitle>Thoughts on AI, papers, tools, and experiments</subtitle><entry><title type="html">AI Diagnostics: When Machines Match Doctors</title><link href="http://localhost:4000/2025/05/30/ai-diagnostic-superhuman/" rel="alternate" type="text/html" title="AI Diagnostics: When Machines Match Doctors" /><published>2025-05-30T00:00:00-03:00</published><updated>2025-05-30T00:00:00-03:00</updated><id>http://localhost:4000/2025/05/30/ai-diagnostic-superhuman</id><content type="html" xml:base="http://localhost:4000/2025/05/30/ai-diagnostic-superhuman/"><![CDATA[<p>A <a href="https://arxiv.org/pdf/2412.10849">recent study</a> has revealed something remarkable: OpenAI’s o1-preview model is now matching attending physicians in diagnostic accuracy on real emergency room cases. This represents a fundamental shift in how we might think about medical diagnosis.</p>
+
+<p><img src="/assets/images/ai-diagnostic.png" alt="Paper abstract showing AI diagnostic capabilities" /></p>
+
+<h2 id="the-key-findings">The Key Findings</h2>
+
+<p><strong>AI Now Matches Top Doctors</strong>: When given real emergency room cases, o1-preview diagnosed patients as accurately as attending physicians. The AI consistently performed at expert level while significantly outperforming the previous GPT-4o model, suggesting this wasn’t just random chance.</p>
+
+<p><strong>AI Excels Where Others Fail</strong>: The most impressive results came from the hardest cases. When GPT-4 completely missed difficult diagnoses, o1-preview often nailed them with high confidence. <strong>It’s as if the AI gets better as problems get harder.</strong></p>
+
+<p><strong>AI Thinks More Like a Statistician</strong>: Both o1-preview and GPT-4 were better than 500+ human doctors at estimating disease probabilities. Doctors often struggled to update their thinking after negative test results, but the AI models stayed more logically consistent.</p>
+
+<p><strong>AI Suggests Smart Testing Plans</strong>: o1-preview recommended which tests to run. Many of its testing strategies were rated as “completely correct” by experts, showing it understands not just what diseases are likely, but how to confirm them.</p>
+
+<h2 id="beyond-pattern-recognition">Beyond Pattern Recognition</h2>
+
+<p>What strikes me most about these results isn’t just the accuracy, but the quality of the reasoning process. AI models might be less susceptible to certain cognitive biases that plague human medical decision-making.</p>
+
+<p>Humans often fall into what we might call “diagnostic anchoring.” Once we form an initial hypothesis, we tend to make incremental adjustments rather than fundamentally reconsidering the problem. It’s like getting stuck in a local optimum: you’re close to one possible solution, so you keep tweaking and refining that approach instead of stepping back to explore entirely different pathways.</p>
+
+<p>This is human tendency. Our brains are wired to build on existing patterns and make small adjustments rather than constantly rebuilding our understanding from scratch. In most situations, this is efficient. But in complex scenarios, this incremental thinking can be a trap when the correct diagnosis requires a completely different framework.</p>
+
+<p>LLMs appear to approach each case more systematically. They can more easily “start fresh” with each piece of new evidence, considering fundamentally different diagnostic possibilities without the psychological cost of abandoning previous reasoning.</p>
+
+<p>Human physicians are prone to anchoring bias, where initial impressions unduly influence subsequent judgments.The data suggests AI models are naturally more systematic in their probabilistic reasoning.</p>
+
+<h2 id="the-implications">The Implications</h2>
+
+<p>We’re witnessing the emergence of AI systems that appear to reason through complex diagnostic scenarios with a level of systematic thinking that matches or exceeds human experts.</p>
+
+<p>If AI can match human diagnostic accuracy while being more resistant to cognitive biases, what role should it play in clinical practice? How do we integrate these capabilities responsibly?</p>
+
+<p>More fundamentally, diagnostic medicine has long been considered one of the most intellectually demanding human activities—requiring pattern recognition, probabilistic reasoning, and complex decision-making under uncertainty. If AI can master this domain, what does that tell us about the broader trajectory of artificial intelligence?</p>
+
+<h2 id="a-glimpse-of-whats-coming">A Glimpse of What’s Coming</h2>
+
+<p>These results feel like another data point in the rapid progression toward a fundamentally different future. We’re approaching systems that can think through medical problems as systematically and accurately as the best human physicians.</p>
+
+<p>The transition from AI as a medical reference tool to AI as a genuine diagnostic partner feels like an actual possibility. And if this pace of progress continues, it won’t be long before we’re asking not whether AI can help with medical diagnosis, but whether human physicians can keep up with AI.</p>]]></content><author><name>Anton</name></author><category term="singularity" /><category term="paper-review" /><category term="ai-capabilities" /><category term="healthcare" /><summary type="html"><![CDATA[A recent study has revealed something remarkable: OpenAI’s o1-preview model is now matching attending physicians in diagnostic accuracy on real emergency room cases. This represents a fundamental shift in how we might think about medical diagnosis.]]></summary></entry><entry><title type="html">Setting up this blog</title><link href="http://localhost:4000/2025/05/24/first-post/" rel="alternate" type="text/html" title="Setting up this blog" /><published>2025-05-24T00:00:00-03:00</published><updated>2025-05-24T00:00:00-03:00</updated><id>http://localhost:4000/2025/05/24/first-post</id><content type="html" xml:base="http://localhost:4000/2025/05/24/first-post/"><![CDATA[<p>The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:</p>
+
+<ul>
+  <li>Papers I’ve read</li>
+  <li>Tools I’m experimenting with</li>
+  <li>Random AI thoughts and observations</li>
+  <li>Code experiments and results</li>
+  <li>The implications of AI</li>
+</ul>
+
+<p>Let’s see if styling works:</p>
+
+<h2 id="code-blocks-work-nicely">Code blocks work nicely</h2>
+
+<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello_ai</span><span class="p">():</span>
+    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Ready to write about AI stuff!</span><span class="sh">"</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p><strong>Bold text</strong> and <em>italic text</em> look good. Links should work too.</p>
+
+<blockquote>
+  <p>Block quotes for when I want to highlight something important from a paper</p>
+</blockquote>
+
+<p>Time to start writing actual content!</p>]]></content><author><name>Anton</name></author><category term="meta" /><summary type="html"><![CDATA[The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:]]></summary></entry><entry><title type="html">The Singularity</title><link href="http://localhost:4000/2025/05/24/the-singularity/" rel="alternate" type="text/html" title="The Singularity" /><published>2025-05-24T00:00:00-03:00</published><updated>2025-05-24T00:00:00-03:00</updated><id>http://localhost:4000/2025/05/24/the-singularity</id><content type="html" xml:base="http://localhost:4000/2025/05/24/the-singularity/"><![CDATA[<blockquote>
   <p><strong>The Singularity</strong> (n.): The moment when artificial intelligence progresses so rapidly that we can no longer predict or comprehend its trajectory. A technological tipping point where AI systems become capable of recursive self-improvement, fundamentally altering the nature of progress itself.</p>
 </blockquote>
 
@@ -33,28 +95,4 @@ We spent decades defining machine intelligence by whether it could fool us into 
 
 <p>I don’t know what our future will look like, but I feel a deep sense of wonder and excitement about finding out. This blog exists to document that journey.</p>
 
-<p>I’m here to witness the progress we’re making, as a curious and open-minded observer.</p>]]></content><author><name>Anton</name></author><category term="singularity" /><category term="ai-capabilities" /><category term="meta" /><summary type="html"><![CDATA[The Singularity (n.): The moment when artificial intelligence progresses so rapidly that we can no longer predict or comprehend its trajectory. A technological tipping point where AI systems become capable of recursive self-improvement, fundamentally altering the nature of progress itself.]]></summary></entry><entry><title type="html">Setting up this blog</title><link href="http://localhost:4000/2025/05/24/first-post/" rel="alternate" type="text/html" title="Setting up this blog" /><published>2025-05-24T00:00:00-03:00</published><updated>2025-05-24T00:00:00-03:00</updated><id>http://localhost:4000/2025/05/24/first-post</id><content type="html" xml:base="http://localhost:4000/2025/05/24/first-post/"><![CDATA[<p>The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:</p>
-
-<ul>
-  <li>Papers I’ve read</li>
-  <li>Tools I’m experimenting with</li>
-  <li>Random AI thoughts and observations</li>
-  <li>Code experiments and results</li>
-  <li>The implications of AI</li>
-</ul>
-
-<p>Let’s see if styling works:</p>
-
-<h2 id="code-blocks-work-nicely">Code blocks work nicely</h2>
-
-<div class="language-python highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">def</span> <span class="nf">hello_ai</span><span class="p">():</span>
-    <span class="nf">print</span><span class="p">(</span><span class="sh">"</span><span class="s">Ready to write about AI stuff!</span><span class="sh">"</span><span class="p">)</span>
-</code></pre></div></div>
-
-<p><strong>Bold text</strong> and <em>italic text</em> look good. Links should work too.</p>
-
-<blockquote>
-  <p>Block quotes for when I want to highlight something important from a paper</p>
-</blockquote>
-
-<p>Time to start writing actual content!</p>]]></content><author><name>Anton</name></author><category term="meta" /><summary type="html"><![CDATA[The setup is pretty minimal - Jekyll on GitHub Pages with a dark theme that I actually like looking at. Should make it easy to just drop markdown files here whenever I want to write about:]]></summary></entry></feed>
+<p>I’m here to witness the progress we’re making, as a curious and open-minded observer.</p>]]></content><author><name>Anton</name></author><category term="singularity" /><category term="ai-capabilities" /><category term="meta" /><summary type="html"><![CDATA[The Singularity (n.): The moment when artificial intelligence progresses so rapidly that we can no longer predict or comprehend its trajectory. A technological tipping point where AI systems become capable of recursive self-improvement, fundamentally altering the nature of progress itself.]]></summary></entry></feed>
