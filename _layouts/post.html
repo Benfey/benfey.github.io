@@ -12,6 +12,8 @@ layout: default
         {{ content }}
     </div>
 
+    {% include related-posts.html post=page limit=2 %}
+
     <div class="post-comments">
         <script src="https://giscus.app/client.js"
                 data-repo="benfey/benfey.github.io"
